@@ -56,3 +56,41 @@ Free Space      : 100GB
 All Drive Information
 
 ```
+
+4.Get Installed Software Information
+```
+Software List
+sr No.     Name of Software       Author   
+----------------------------------------------
+1. Internet Download Manager     Idm Developer
+2. ..                            ..
+List out All Installed Software List
+```
+
+5.List out Startup Programs
+```
+1.ItuneHelpe
+2.Google Drive
+3.Microsoft Office
+......
+
+```
+
+6.Get Hardware Information
+```
+processor name    : Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+processor bit     : 64
+Installed RAM     : 6GB
+Installed Drivers : vm3dum64_loader
+I/O Ports         :
+and list out all hardware part names
+```
+
+7.Get Indexes of Every File
+```
+Sr No.    File Name        FIle Path 
+1.        filename.txt     C:\Users\ravi\Desktop\demo\folder1\filename.txt 
+2.        ............     ....................................
+List out Every File with its name base path drive name Type of file
+
+```
