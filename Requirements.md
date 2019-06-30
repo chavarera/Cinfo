@@ -6,9 +6,9 @@
  
 ### Prerequisites
 ```
-  - python :3.x Version
-  - Operating System :windows,Linux
-  - Mind
+Python :3.x Version
+Operating System :windows,Linux
+Mind
 ```
 
 ### Requirements
