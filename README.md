@@ -1,10 +1,8 @@
 # Cinfo
 Cinfo is a python based tool to gather system related information and generate reports from it.
 
-## Contribute
-Thanks Goes To Wonderful People
-
 ## Contributors
+Thanks Goes To Wonderful People
 
 | Name                | GitHub                                       | Social                                                |
 | :------------------ | :------------------------------------------- | :---------------------------------------------------- |
