@@ -8,3 +8,6 @@ Thanks Goes To Wonderful People
 | :------------------ |
 |![Ravi](https://avatars0.githubusercontent.com/u/33047641?s=100&v=4)|
 |[Github](http://github.com/chavarera)|
+
+|![Dipak](https://avatars0.githubusercontent.com/u/34307370?s=100&v=4)|
+|[Github](https://github.com/RoyalEagle73)|
