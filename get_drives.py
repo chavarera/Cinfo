@@ -103,5 +103,3 @@ class get_drives:
 			self.data += "\n\n\n\n\n"
 
 		return self.data
-
-print(get_drives.work.__doc__)
