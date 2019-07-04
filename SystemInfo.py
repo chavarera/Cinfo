@@ -7,14 +7,46 @@ import platform
 import os
 
 class SystemInfo:
+    '''
+    Class Name:SystemInfo
+    Desciption:this class used to fetch the operating system related information
+
+    call this method to get all system related data:
+        objectName.GetSystemInfo()
+    
+    '''
     def getPlatform(self,name):
-        '''Return machine platform windows or ubuntu '''
+        '''Return a string machine platform windows or ubuntu
+
+            call this method
+            objectName.getPlatform()
+        '''
         try:
            return getattr(platform, name)()
         except:
             return None
-          
+    def getMachineName(self):
+        '''Return machine name
+
+            call this method
+            objectName.getMachineName()
+        '''
+        try:
+            return platform.node()
+        except:
+            return None
     def get_reg_value(self,name):
+        '''Return string value of given key name inside windows registery
+
+            Hkeys=reg.HKEY_LOCAL_MACHINE
+            path=r'SOFTWARE\Microsoft\Windows NT\CurrentVersion'
+            
+            call this method
+            objectName.get_reg_value(name)
+
+            name:ProductName,InstallDate,ReleaseId etc..
+        '''
+        
         try:
             Hkeys=reg.HKEY_LOCAL_MACHINE
             path=r'SOFTWARE\Microsoft\Windows NT\CurrentVersion'
@@ -27,7 +59,10 @@ class SystemInfo:
         
     def GetSystemInfo(self):
         '''
-        Get System Information using Windows Registery and module platform
+        This Method Return a dictionary object of  System Information using Windows Registery and module platform
+
+        class this method
+            objectname.GetSystemInfo()
         '''
         #Create a Dictionary object for saving all data
         system_data={}
