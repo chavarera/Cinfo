@@ -48,6 +48,12 @@ class NetworkInfo:
                         ks='Ip Route Enable'
                     if ks=='WINS Proxy Enabled':
                         ks='W proxy Enable'
+                    if ks=='DHCPv6 Client DUID':
+                        ks='DHCPv6 DUID'
+                    if ks=='Link-local IPv6 Address':
+                        ks='Link-local IPv6'
+                    if ks=='NetBIOS over Tcpip':
+                        ks='NetBIOS Tcpip'
                     key_data[ks]=values.strip()
                     keys_value.append(key_data)
             interface_data['details']=keys_value

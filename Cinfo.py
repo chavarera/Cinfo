@@ -5,7 +5,8 @@ s1=SystemInfo.SystemInfo()
 result=s1.GetSystemInfo()
 print('\n{0:-^80s}\n'.format('Operating System Information'))
 for key,value in result.items():
-    print('{}\t:\t{}'.format(key,value))
+    print('{}\t: {}'.format(key,value))
+
 
 
 #Network Information
@@ -17,6 +18,17 @@ for i in n1.networkinfo():
     print(name)
     for values in i['details']:
         val=list(values.items())[0]
-        print('{}\t:\t{}'.format(val[0],val[1]))
+        print('{}\t: {}'.format(val[0],val[1]))
 
 
+
+#Get Installed Software Information
+import SoftwareInfo
+print('\n\n{0:-^80s}'.format('User Installed Software'))
+soft=SoftwareInfo.SoftwareInfo()
+softwares=soft.getSoftwareList()
+no=0
+
+for r in softwares:
+    no+=1
+    print('\nSerial No.\t: {}\nSoftware Name\t: {}\nVersion No\t: {}\nPublisher Name\t: {}'.format(no,r['name'],r['version'],r['publisher']))
