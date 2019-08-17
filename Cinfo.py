@@ -1,4 +1,5 @@
 
+
 #Get System Realted Information
 import SystemInfo
 s1=SystemInfo.SystemInfo()
@@ -55,3 +56,27 @@ print("\n2. RAM")
 for r in ram:
     print('Usable RAM Size : {}'.format(r['PhysicalMemory']))
 
+
+#Get System Hardware Information
+import HardwareInfo
+hi=HardwareInfo.HardwareInfo()
+print('\n\n{0:-^80s}'.format('Hardware Information '))
+res=hi.getHardwareinfo()
+for k,v in res.items():
+    print("\n_________{} Information_________".format(k))
+    for data in v:
+        for kn,kv in data.items():
+            print("{} : {}".format(kn,kv))
+
+
+#Get Total File Information
+import FileInfo
+finfo=FileInfo.FileInfo()
+
+print('\n\n{0:-^80s}'.format('Total File Count '))
+
+cnt=finfo.GetCount()
+no=0
+for r in cnt:
+    print('\nSerial No.\t: {}\nDrive Name\t: {}\nFile Count\t: {} Files'.format(no,r['drive'][:-2],r['count']))
+    no=no+1
