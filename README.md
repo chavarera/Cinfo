@@ -71,7 +71,9 @@ use Windows console and run
 python Cinfo.py
 ```
 
-output
+![run](https://github.com/chavarera/Cinfo/blob/master/img/run.PNG)
+
+OutPut
 ```
 Getting System Information
 Getting Network Information
@@ -82,9 +84,10 @@ Getting File Information
 Successfully written Result in to output/20190817-155638.txt
 ```
 
-Now check output which is stored in output folder
+Now check output which is stored in output folder in the form of text File
 
-## Contributing
+![output](https://github.com/chavarera/Cinfo/blob/master/img/output.PNG)
+
 
 
 ## Versioning
