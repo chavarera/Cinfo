@@ -1,9 +1,101 @@
-# Cinfo
-Cinfo is a python based tool to gather system related information and generate reports from it.
+# CInfo 1.0
+CInfo is an utility tool to gaining system,network,file,hardware Information.Cinfo is a python based tool to gather system related information.
 
-## Contributors
-Thanks Goes To Wonderful People
+## CInfo Gathers Following Information
+```
+System Information
+Network Information
+Software Information
+Storage Information
+Hardware Information
+File Information
+```
 
-![Ravi](https://avatars0.githubusercontent.com/u/33047641?s=100&v=4) 
-![Dipak](https://avatars0.githubusercontent.com/u/34307370?s=100&v=4)
 
+### Prerequisites
+
+What things you need to install the software and how to install them
+
+```
+Python ver : 3.x
+Operating  : Windows
+```
+
+### Used Modules
+System Information
+```
+_winreg
+datetime
+platform
+os
+```
+
+Network Information
+```
+socket
+uuid
+subprocess
+re
+```
+Storage Information
+```
+subprocess
+math
+wmi
+```
+
+Software Information
+```
+winreg
+```
+
+Hardware Information
+```
+subprocess
+```
+File Information
+```
+os
+string 
+ctypes
+```
+
+
+
+### Installing
+
+Download or clone this repository and extract in your Local Machine go to extracted folder.
+use Windows console and run 
+
+```
+python Cinfo.py
+```
+
+output
+```
+Getting System Information
+Getting Network Information
+Getting Software Information
+Getting Storage Information
+Getting Hardware Information
+Getting File Information
+Successfully written Result in to output/20190817-155638.txt
+```
+
+Now check output which is stored in output folder
+
+## Contributing
+
+
+## Versioning
+
+Cinfo 1.0
+
+## Authors
+
+* **Ravishankar Chavare** - *Initial work* - [chavarera](https://github.com/chavarera)
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
