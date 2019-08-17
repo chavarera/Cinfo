@@ -1,5 +1,5 @@
 # CInfo 1.0
-CInfo is an utility tool to gaining system,network,file,hardware Information.Cinfo is a python based tool to gather system related information.
+CInfo is a utility tool for gaining system, network, file, hardware Information. CInfo is a python based tool to gather system-related information.
 
 ## CInfo Gathers Following Information
 ```
@@ -17,8 +17,8 @@ File Information
 What things you need to install the software and how to install them
 
 ```
-Python ver : 3.x
-Operating  : Windows
+Python ver: 3.x
+Operating: Windows
 ```
 
 ### Used Modules
@@ -64,7 +64,7 @@ ctypes
 
 ### Installing
 
-Download or clone this repository and extract in your Local Machine go to extracted folder.
+Download or clone this repository and extract in your Local Machine go to the extracted folder.
 use Windows console and run 
 
 ```
@@ -81,10 +81,10 @@ Getting Software Information
 Getting Storage Information
 Getting Hardware Information
 Getting File Information
-Successfully written Result in to output/20190817-155638.txt
+Successfully written Result into output/20190817-155638.txt
 ```
 
-Now check output which is stored in output folder in the form of text File
+Now check output which is stored in the output folder in the form of text File
 
 ![output](https://github.com/chavarera/Cinfo/blob/master/img/output.PNG)
 
@@ -103,7 +103,7 @@ Cinfo 1.0
 
 
 
-**Note:** If You Looking For Similar Version of Software for Unix distribution check out work submited by 
+**Note:** If You Looking For Similar Version of Software for Unix distribution check out work submitted by 
 **Deepak Chauhan**
 
 [Cinfo-for-Linux](https://github.com/RoyalEagle73/Cinfo/tree/Cinfo-for-Linux)
