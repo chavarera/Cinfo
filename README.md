@@ -96,9 +96,10 @@ Cinfo 1.0
 
 ## Authors
 
-* **Ravishankar Chavare** - *Initial work* - [chavarera](https://github.com/chavarera)
+* **Ravishankar Chavare** - [chavarera](https://github.com/chavarera)
 
 
 ## License
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
