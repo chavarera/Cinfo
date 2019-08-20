@@ -9,13 +9,13 @@ CompositionID	: Enterprise
 EditionID	: Professional
 SoftwareType	: System
 SystemRoot	: C:\WINDOWS
-ProductId	: 00330-70007-80970-AAOEM
+ProductId	: XXXXX-XXXXX-XXXXX-XXXX
 BuildBranch	: 19h1_release
 BuildLab	: 18362.19h1_release.190318-1202
 BuildLabEx	: 18362.1.amd64fre.19h1_release.190318-1202
 CurrentBuild	: 18362
 Machine Name	: AMD64
-Network Name	: EKPubgikar
+Network Name	: MySyste,
 Platform Type	: Windows-10-10.0.18362-SP0
 System Type	: Windows
 Release No 	: 10
@@ -35,8 +35,8 @@ W proxy Enable	: No
 
 ___________________________Ethernet adapter Ethernet:___________________________
 Media State	: Media disconnected
-Description	: Qualcomm Atheros AR8162/8166/8168 PCI-E Fast Ethernet Controller (NDIS 6.30)
-Physical Addr.	: 3C-97-0E-38-16-AD
+Description	: Qualcomm Atheros AR8162/1111/111 PCI-E Fast Ethernet Controller (NDIS 6.30)
+Physical Addr.	: XX-XX-XX-XX-XX-XX
 DHCP Enabled	: Yes
 Config Enabled	: Yes
 
@@ -44,7 +44,7 @@ Config Enabled	: Yes
 _________________Wireless LAN adapter Local Area Connection* 1:_________________
 Media State	: Media disconnected
 Description	: Microsoft Wi-Fi Direct Virtual Adapter
-Physical Addr.	: 12-68-9D-EC-F9-08
+Physical Addr.	: XX-XX-XX-XX-XX-XX
 DHCP Enabled	: Yes
 Config Enabled	: Yes
 
@@ -52,33 +52,33 @@ Config Enabled	: Yes
 _________________Wireless LAN adapter Local Area Connection* 2:_________________
 Media State	: Media disconnected
 Description	: Microsoft Wi-Fi Direct Virtual Adapter #2
-Physical Addr.	: 22-68-9D-EC-F9-08
+Physical Addr.	: XX-XX-XX-XX-XX-XX
 DHCP Enabled	: Yes
 Config Enabled	: Yes
 
 
 __________________________Wireless LAN adapter Wi-Fi:___________________________
 Description	: Qualcomm Atheros AR9285 Wireless Network Adapter
-Physical Addr.	: 20-68-9D-EC-F9-08
+Physical Addr.	: XX-XX-XX-XX-XX-XX
 DHCP Enabled	: Yes
 Config Enabled	: Yes
-Link-local IPv6	: fe80::6105:e1f7:ed1f:863%6(Preferred)
-IPv4 Address	: 192.168.31.25(Preferred)
-Subnet Mask	: 255.255.255.0
+Link-local IPv6	: XXXX::XXXX:XXXX:XXXX:XXXX%6(Preferred)
+IPv4 Address	: XXX.XXX.XX.XXX(Preferred)
+Subnet Mask	: XXX.XXX.XXX.0
 Lease Obtained	: Saturday, August 17, 2019 12:14:09 PM
 Lease Expires	: Sunday, August 18, 2019 1:28:22 AM
-Default Gateway	: 192.168.31.1
-DHCP Server	: 192.168.31.1
-DHCPv6 IAID	: 69232797
-DHCPv6 DUID	: 00-01-00-01-24-7F-3F-18-3C-97-0E-38-16-AD
-DNS Servers	: 192.168.31.1
+Default Gateway	: XXX.XXX.XX.1
+DHCP Server	: XXX.XXX.XX.1
+DHCPv6 IAID	: XXXXXXXX
+DHCPv6 DUID	: XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-38-XX-AD
+DNS Servers	: XXX.XXX.XX.1
 NetBIOS Tcpip	: Enabled
 
 
 _________________________Important Network Information__________________________
-HostNodeName	: EKPubgikar
-IpAddress	: 192.168.31.25
-MacAddress	: E0:06:E6:BF:14:6A
+HostNodeName	: MyHostNae
+IpAddress	: XXX.XXX.XX.XX
+MacAddress	: xx:xx:xx:xx:xx:xx
 
 
 ----------------------------User Installed Software-----------------------------
@@ -118,101 +118,6 @@ Software Name	: Python Launcher
 Version No	: 3.7.6657.0
 Publisher Name	: Python Software Foundation
 
-Serial No.	: 8
-Software Name	: Google Update Helper
-Version No	: 1.3.99.0
-Publisher Name	: Google Inc.
-
-Serial No.	: 9
-Software Name	: Adobe Refresh Manager
-Version No	: 1.8.0
-Publisher Name	: Adobe Systems Incorporated
-
-Serial No.	: 10
-Software Name	: Adobe Acrobat Reader DC
-Version No	: 19.012.20036
-Publisher Name	: Adobe Systems Incorporated
-
-Serial No.	: 11
-Software Name	: Lenovo EasyCamera
-Version No	: 3.15.0414.1
-Publisher Name	: Vimicro
-
-Serial No.	: 12
-Software Name	: Microsoft Visual C++ 2015 Redistributable (x64) - 14.0.23026
-Version No	: 14.0.23026.0
-Publisher Name	: Microsoft Corporation
-
-Serial No.	: 13
-Software Name	: Anaconda3 2019.03 (Python 3.7.3 64-bit)
-Version No	: 2019.03
-Publisher Name	: Anaconda, Inc.
-
-Serial No.	: 14
-Software Name	: Android Studio
-Version No	: 3.4
-Publisher Name	: Google LLC
-
-Serial No.	: 15
-Software Name	: ELAN Touchpad 11.15.0.18_X64
-Version No	: 11.15.0.18
-Publisher Name	: ELAN Microelectronic Corp.
-
-Serial No.	: 16
-Software Name	: Git version 2.21.0
-Version No	: 2.21.0
-Publisher Name	: The Git Development Community
-
-Serial No.	: 17
-Software Name	: ImageMagick 7.0.8-49 Q16 (64-bit) (2019-06-08)
-Version No	: 7.0.8
-Publisher Name	: ImageMagick Studio LLC
-
-Serial No.	: 18
-Software Name	: Mozilla Firefox 67.0.2 (x64 en-US)
-Version No	: 67.0.2
-Publisher Name	: Mozilla
-
-Serial No.	: 19
-Software Name	: Tesseract-OCR - open source OCR engine
-Version No	: v5.0.0.20190526
-Publisher Name	: Tesseract-OCR community
-
-Serial No.	: 20
-Software Name	: VLC media player
-Version No	: 3.0.7.1
-Publisher Name	: VideoLAN
-
-Serial No.	: 21
-Software Name	: WinRAR 5.71 (64-bit)
-Version No	: 5.71.0
-Publisher Name	: win.rar GmbH
-
-Serial No.	: 22
-Software Name	: Python 3.7.3 Executables (64-bit)
-Version No	: 3.7.3150.0
-Publisher Name	: Python Software Foundation
-
-Serial No.	: 23
-Software Name	: Microsoft Visual C++ 2015 x64 Minimum Runtime - 14.0.23026
-Version No	: 14.0.23026
-Publisher Name	: Microsoft Corporation
-
-Serial No.	: 24
-Software Name	: Java 8 Update 221 (64-bit)
-Version No	: 8.0.2210.11
-Publisher Name	: Oracle Corporation
-
-Serial No.	: 25
-Software Name	: Java SE Development Kit 8 Update 211 (64-bit)
-Version No	: 8.0.2110.12
-Publisher Name	: Oracle Corporation
-
-Serial No.	: 26
-Software Name	: Intel® Hardware Accelerated Execution Manager
-Version No	: 7.5.1
-Publisher Name	: Intel Corporation
-
 
 -----------------------------Storation Information------------------------------
 
@@ -242,8 +147,8 @@ Usable RAM Size : 3.85 GB
 
 _________bios Information_________
 Manufacturer : LENOVO
-SerialNumber : WB06631325WB0206050C
-SMBIOSBIOSVe : 62CN34WW
+SerialNumber : XXXXXXXXXXXXXXXXXX
+SMBIOSBIOSVe : XXXXXX
 
 _________cpu Information_________
 Name OF The cpu : Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz
