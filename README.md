@@ -1,4 +1,5 @@
 # CInfo 1.0
+![CInfo](https://raw.githubusercontent.com/chavarera/Cinfo/master/logo.png)
 CInfo is a utility tool for gaining system, network, file, hardware Information. CInfo is a python based tool to gather system-related information.
 
 ## CInfo Gathers Following Information
