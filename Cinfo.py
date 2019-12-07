@@ -1,6 +1,15 @@
-#For gettting time and date
+from lib.windows import SystemInfo
+from lib.windows import NetworkInfo
+from lib.windows import SoftwareInfo
+from lib.windows import StorageInfo
+from lib.windows import HardwareInfo            
+from lib.windows import FileInfo
 import time
+
+
+#For gettting time and date
 timestr = time.strftime("%Y%m%d-%H%M%S")
+
 
 #Append all result to alls
 alls=[]
@@ -9,7 +18,6 @@ def Display(data):
 
 
 #Get System Realted Information
-import SystemInfo
 s1=SystemInfo.SystemInfo()
 result=s1.GetSystemInfo()
 print('Getting System Information')
@@ -22,7 +30,6 @@ for key,value in result.items():
 
 #Network Information
 print('Getting Network Information')
-import NetworkInfo
 Display('\n\n{0:-^80s}'.format('Network Related Information'))
 n1=NetworkInfo.NetworkInfo()
 for i in n1.networkinfo():
@@ -36,21 +43,19 @@ for i in n1.networkinfo():
 
 #Get Installed Software Information
 print('Getting Software Information')
-        
-import SoftwareInfo
+
 Display('\n\n{0:-^80s}'.format('User Installed Software'))
 soft=SoftwareInfo.SoftwareInfo()
 softwares=soft.getSoftwareList()
 no=0
 for r in softwares:
     no+=1
-    Display('\nSerial No.\t: {}\nSoftware Name\t: {}\nVersion No\t: {}\nPublisher Name\t: {}'.format(no,r['name'],r['version'],r['publisher']))
+    Display('\nSerial No.\t: {}\nSoftware Name\t: {}\nVersion No\t: {}\nPublisher Name\t: {}'.
+            format(no,r['name'],r['version'],r['publisher']))
 
 
 #Get Storage Information
 print('Getting Software Information')
-
-import StorageInfo
 Display('\n\n{0:-^80s}'.format('Storation Information'))
 storage1=StorageInfo.StorageInfo()
 storage=storage1.getStorageinfo()
@@ -74,8 +79,6 @@ for r in ram:
 
 #Get System Hardware Information
 print('Getting Hardware Information')
-
-import HardwareInfo
 hi=HardwareInfo.HardwareInfo()
 Display('\n\n{0:-^80s}'.format('Hardware Information '))
 res=hi.getHardwareinfo()
@@ -88,17 +91,14 @@ for k,v in res.items():
 
 #Get Total File Information
 print('Getting File Information')
-            
-import FileInfo
 finfo=FileInfo.FileInfo()
-
 Display('\n\n{0:-^80s}'.format('Total File Count '))
-
 cnt=finfo.GetCount()
 no=0
 for r in cnt:
     Display('\nSerial No.\t: {}\nDrive Name\t: {}\nFile Count\t: {} Files'.format(no,r['drive'][:-2],r['count']))
     no=no+1
+
 
 #Write All Data To text file inside output folder    
 file='output/'+timestr+'.txt'
