@@ -1,4 +1,6 @@
-# CInfo 
+# CInfo (Computer Information)
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+
 ![CInfo](https://raw.githubusercontent.com/chavarera/Cinfo/master/img/logo.png)
 
 
