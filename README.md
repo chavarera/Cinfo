@@ -100,18 +100,6 @@ Cinfo 1.0
 1.0 - Initial Release
 
 
-## Authors
-
-* **Ravishankar Chavare** - [chavarera](https://github.com/chavarera)
-
-
-
-
-**Note:** If You Looking For Similar Version of Software for Unix distribution check out work submitted by 
-**Deepak Chauhan**
-
-[Cinfo-for-Linux](https://github.com/RoyalEagle73/Cinfo/tree/Cinfo-for-Linux)
-
 ## License
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
