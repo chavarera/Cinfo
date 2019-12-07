@@ -1,0 +1,55 @@
+import os
+
+class get_package:
+	'''
+	get_package CLASS COMBINE A SINGLE METHOD AND A CONSTRUCTOR, WHICH ARE AS FOLLOWS:
+		1) __init__
+		2) work()
+			
+			__init__ DOCFILE:
+				__init__ SERVES THE PURPOSE TO INITIALISE VARIABLES WHICH AREGONG TO BE USED LATER IN PROGRAM.
+		
+			
+			work() DOCFILE :
+				work() FUNCTION WORKS THIS WAY:
+					1) SEARCHES FOR FILES IN /usr/bin/.
+					2) REFINE FILES WHICH ARE NOT SCRIPTS
+					3) SAVE THEM IN A FILE.
+					4) RETURNS TRUE FOR SUCCESS
+	'''
+	def __init__(self):
+		'''
+		__init__ DOCFILE:
+			__init__ SERVES THE PURPOSE TO INITIALISE VARIABLES WHICH AREGONG TO BE USED LATER IN PROGRAM.
+		'''
+		self.file_path = "/usr/bin/"										# SETTING UP FILE PATH TO FIND PACKAGES
+		self.files_found = os.listdir(self.file_path)						# FINDING FILES AND SAVING THEM IN A LIST
+		self.data = "S.No., Package Name\n"									# INITIALISING VARIABLE TO STORE DATA LATER
+		self.current_path = os.getcwd()										# SAVING THE CURRENT WORKING DIRECTORY FOR LATER USE
+		self.count = 0														# TO KEEP COUND OF NUMBER OF PACKAGES FOUND
+
+	def work(self):
+		'''
+		work() DOCFILE :
+		work() FUNCTION WORKS THIS WAY:
+			1) SEARCHES FOR FILES IN /usr/bin/.
+			2) REFINE FILES WHICH ARE NOT SCRIPTS
+			3) SAVE THEM IN A FILE.
+			4) RETURNS TRUE FOR SUCCESS
+		'''
+		# CHANGING WORKING DIRECTORY
+		os.chdir(self.file_path)											# CHANGING CURRENT WORKING DIRECTORY
+
+		# LISTING ALL FILES AND SERIAL NUMBER EXCLUDING FOLDERS
+		for file in self.files_found:										# CHECKING EACH SCANNED FILE ONE BY ONE
+			if not os.path.isdir(file):										# CHECKING IS SCANNED FILE IS A FILE OR FOLDER
+				if not file.endswith(".sh"):									# REMOVING SCRIPT FILES
+					self.count += 1											# IF IT IS A FILE, COUNTING INCREASES BY 1
+					self.data += str(self.count) + "," + file + "\n"		# SAVING THE PACKAGE NAME AND SERIAL NUMBER IN DATA VARIABLE
+
+
+		os.chdir(self.current_path)											# CHANGING THE PATH TO ORIGINAL WORKING DIRECTORY
+		with open("packages_installed.csv", 'w') as pack:					# OPENNG NEW FILE TO SAVE DATA
+			pack.write(self.data)											# WRITING DATA TO FILE 
+
+		return True
