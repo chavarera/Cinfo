@@ -54,6 +54,15 @@ for r in softwares:
             format(no,r['name'],r['version'],r['publisher']))
 
 
+#Get Installed WebBrowsers List
+print('Getting Installed Webbrowser Information')
+Display('\n\n{0:-^80s}'.format('User Installed Webbrowser'))
+browsers=soft.GetInstalledBrowsers()
+no=0
+for b in browsers:
+    no+=1
+    Display('\nSerial No.\t: {}\nBrowser Name\t: {}'.format(no,b))
+
 #Get Storage Information
 print('Getting Software Information')
 Display('\n\n{0:-^80s}'.format('Storation Information'))
