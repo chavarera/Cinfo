@@ -1,5 +1,9 @@
 # CInfo (Computer Information)
+[Join slack channel for more discussion & Help ](https://join.slack.com/t/cinfo-group/shared_invite/enQtODU3Nzc2OTUwMjk1LTQxNzdhNmI1MjJkMjYxMjM2OTIyOTMwYzkyMDZhMDU2OGE5ZDliMWEwZWVmN2Q4ZmMzOTQ0NThmMjMwZmU4OTk)
+
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+
+
 
 ![CInfo](https://raw.githubusercontent.com/chavarera/Cinfo/master/img/logo.png)
 
@@ -36,22 +40,28 @@ Operating: Windows,Linux
 ```
 
 ## Structure
-:file_folder: lib :
+
+1. :file_folder: lib :
 ```
 if you want to create any class add it in following directory
 1.windows:contains All required custom modules
 2.linux  : contains All required custom modules
 ```
-:file_folder: img :
+2. :file_folder: img :
+```
 contains all project images.
+```
 
-:file_folder: output :
+3. :file_folder: output :
+```
 Here final generated file will added
+```
+4. :page_facing_up: Cinfo.py:
+```
+This file is start of this project . 
+simply run this code to execute this projects.
+```
 
-:page_facing_up: Cinfo.py:
-```
-This file is start of this project . simply run this code to execute this projects.
-```
 
 ### Install
 
@@ -80,16 +90,12 @@ Now check output which is stored in the output folder in the form of text File
 ![output](https://github.com/chavarera/Cinfo/blob/master/img/output.PNG)
 
 
-- [Contributors](#Contributors)
+## Contributors
 <table>
   <tr>
     <td align="center"><a href="https://rmcservices.com"><img src="https://avatars3.githubusercontent.com/u/33047641?v=3" width="100px;" alt="Ravishankar Chavare"/><br /><sub><b>Ravi Chavare</b></sub></a><br /> <a href="https://github.com/chavarera" title="Github">📖</a></td>
       <td align="center"><a href="https://github.com/royaleagle73"><img src="https://avatars1.githubusercontent.com/u/34307370?s=460&v=4" width="100px;" alt="Deepak Chauhan"/><br /><sub><b>Deepak Chauhan</b></sub></a><br /> <a href="https://github.com/royaleagle73" title="Github">📖</a></td>
 </tr>
-  <p>      </p>
-  <tr>
-
-  </tr>
 </table>
 
 ## Help
