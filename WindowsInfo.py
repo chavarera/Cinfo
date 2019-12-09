@@ -97,16 +97,22 @@ for k,v in res.items():
         for kn,kv in data.items():
             Display("{} : {}".format(kn,kv))
 
+#List Of USB Port
+usb_ports=hi.UsbPortInfo()
+Display('\n\n{0:-^80s}'.format('Avilable USB Port Information '))
+for k,v in usb_ports.items():
+    Display(f'{k}:{v}')
+
 
 #Get Total File Information
-print('Getting File Information')
-finfo=FileInfo.FileInfo()
-Display('\n\n{0:-^80s}'.format('Total File Count '))
-cnt=finfo.GetCount()
-no=0
-for r in cnt:
-    Display('\nSerial No.\t: {}\nDrive Name\t: {}\nFile Count\t: {} Files'.format(no,r['drive'][:-2],r['count']))
-    no=no+1
+##print('Getting File Information')
+##finfo=FileInfo.FileInfo()
+##Display('\n\n{0:-^80s}'.format('Total File Count '))
+##cnt=finfo.GetCount()
+##no=0
+##for r in cnt:
+##    Display('\nSerial No.\t: {}\nDrive Name\t: {}\nFile Count\t: {} Files'.format(no,r['drive'][:-2],r['count']))
+##    no=no+1
 
 
 #Write All Data To text file inside output folder    

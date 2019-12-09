@@ -1,4 +1,5 @@
 from subprocess import getoutput
+from lib.windows.common.RegistryHandler import RegistryHandler
 class HardwareInfo:
     def getCmdOutput(self,cmd):
         '''
@@ -38,11 +39,20 @@ class HardwareInfo:
             cpuinfo.append(res)
             n=n+1    
         return cpuinfo
+    
+    def UsbPortInfo(self):
+        Usb_List={}
+        key='HCM' #HKEY_LOCAL_MACHINE
+        for i in ['ROOT_HUB20','ROOT_HUB30']:            
+            path=r'SYSTEM\CurrentControlSet\Enum\USB\{}'.format(i)
+            reg_=RegistryHandler(key,path)
+            count=reg_.getKeys()
+            Usb_List[i[:-1]]=count
+        return Usb_List
+
     def getHardwareinfo(self):
         hardwarinfo={}
-
         hardwarinfo['bios']=self.getBiosInfo()
         hardwarinfo['cpu']=self.getCpuInfo()
         return hardwarinfo
-        
 
