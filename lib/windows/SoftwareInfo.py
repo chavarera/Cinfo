@@ -46,6 +46,7 @@ class SoftwareInfo:
             except Exception as ex:
                 continue
         return all_softwares
+    
     def getSoftwareList(self):
         '''
         Get All installed Softwae in th list format with name,version,publisher
@@ -54,3 +55,20 @@ class SoftwareInfo:
            return  self.getReg_keys(reg.KEY_WOW64_32KEY)+self.getReg_keys(reg.KEY_WOW64_64KEY)
         except Exception as ex:
             return ex
+        
+    def GetInstalledBrowsers(self):
+        path='SOFTWARE\Clients\StartMenuInternet'
+        Hkeys=reg.HKEY_LOCAL_MACHINE
+        Regkey = reg.ConnectRegistry(None, Hkeys)
+        key = reg.OpenKey(Regkey, path,0, reg.KEY_READ | reg.KEY_WOW64_32KEY)
+        key_count = reg.QueryInfoKey(key)[0]
+        browser_list=[]
+        for i in range(key_count):
+            singsoft={}
+            try:
+                keyname=reg.EnumKey(key, i)
+                browser_list.append(keyname)
+            except Exception as ex:
+                continue
+        return browser_list
+
