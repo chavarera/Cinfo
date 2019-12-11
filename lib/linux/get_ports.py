@@ -31,11 +31,12 @@ __init__ DOCFILE:
 __init__ BLOCK SERVES THE INITIALIZATION FUNCTION, CONTAINING INITIALIZED VARIABLES WHICH IS GOING TO BE USED LATER BY OTHER MEMBER FUNCTION.
 		'''
 		self.data = []																					# TO SAVE DATA RECIEVED FROM COMMAND INTO A STRING
-		self.final_output = []																			# FOR SAVING BROWSER DATA COLLECTED INTO A SINGLE VARIABLE
+		self.final_list = []																			# FOR SAVING BROWSER DATA COLLECTED INTO A SINGLE VARIABLE
 		self.secondary_port_list = []																	# FOR SAVING ALL PORTS FOR LATER COMPARISION FOR DUPLICATE PORTS
 		self.protocol = ""																				# FOR EXTRACTING PROTOCOLS FROM ALL OUTPUTS
-		
-
+		self.final_data = ""																			# FOR SAVING FINAL DATA IN A STRING
+		self.current_path = os.getcwd()																	# For SAVING CURRENT DIRECTORY INFORMATION
+	
 	def work(self):
 		'''
 WORK() DOCFILE:
@@ -58,6 +59,17 @@ WORK() DOCFILE:
 				self.extracted_port = self.ports_in_line[0][1:]											# REMOVING SEMI-COLON(:) FROM THE START OF PORT
 				if self.extracted_port not in self.secondary_port_list:									# CHECKING IF THE EXTRACTED PORT EXIST BEFORE IN LIST
 					self.protocol = i[:i.find(' ')]														# EXTRACTING PROTOCOL FROM THE OUTPUT
-					self.final_output.append((self.protocol,self.extracted_port))						# SAVING THE PROTOCOL AND PORT IN THE LIST
+					self.final_list.append((self.protocol,self.extracted_port))							# SAVING THE PROTOCOL AND PORT IN THE LIST
 					self.secondary_port_list.append(self.extracted_port)								# SAVING THE PROTOCOL IN SECONDARY LIST FOR LATER COMPARISION
-		return self.final_output																		# RETURNING THE FINAL OUTPUT
+		
+		self.final_data = "Protocol,Port\n"
+		for i in self.final_list:
+			self.final_data += i[0]+","+i[1]+"\n"
+
+		if self.current_path.find("output") == -1:														# CHECKING IF CURRENT WORKING DIRECTORY IS OUTPUT FOLDER
+			self.current_path += "/output/"
+		os.chdir(self.current_path)																		# CHANGING CURRENT WORKING DIRECTORY
+		with open("Open Ports.csv", "w") as ports:														# SAVING DATA INTO A FILE
+			ports.write(self.final_data)
+
+		return "Open Ports.csv"																			# RETURNING THE NAME OF FILE

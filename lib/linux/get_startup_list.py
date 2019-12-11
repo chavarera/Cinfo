@@ -1,6 +1,4 @@
 import os
-from tabulate import tabulate
-
 
 class get_startup_list:
 	def __init__(self):
@@ -8,7 +6,8 @@ class get_startup_list:
 		__init__ DOCFILE:
 			__init__ BLOCK CONTAINS INITIALISED VARIABLES FOR LATER USE.
 		'''
-		self.data = "------------------------------------------------------------\n                    STARTUP SERVICES                 \n------------------------------------------------------------\n"
+		self.data = ""																							# TO SAVE FETCHED DATA
+		self.current_path = ""																					# TO GET THE CURRENT WORKING DIRECTORY 
 		self.services = ""																						# THIS VARIABLES SAVED COMMAND LINE OUTPUT
 		self.service_list = []																					# LIST TO SAVE THE OUTPUT IN A FORMATTED WAY
 
@@ -48,13 +47,26 @@ class get_startup_list:
 
 
 		for i in range(0, len(self.service_list)):																# HOVERING OVER THE WHOLE LIST TO EXECUTE SIMPLE FUNCTIONS 
-			self.service_list[i].insert(0, "%d) "%(i+1))														# ADDING SERIAL NUMBER TO SUBLIST FOR LATER TABLE PRINTING
+			self.service_list[i].insert(0, "%d"%(i+1))															# ADDING SERIAL NUMBER TO SUBLIST FOR LATER TABLE PRINTING
 			if ".service" in self.service_list[i][1]: 															# REMOVING .Service IF EXISTS IN SERVICE NAME
 				self.service_list[i][1] = self.service_list[i][1].replace(".service", '')	
 			if "@" in self.service_list[i][1]:																	# REMOVING @ IF EXISTS IN SERVICE NAME
 				self.service_list[i][1] = self.service_list[i][1].replace("@", '')
 
 
+		self.current_path = os.getcwd()																			# SAVING THE CURRENT WORKING DIRECTORY FOR LATER USE
+		
+		if self.current_path.find("output") == -1:																# CHECKING IF CURRENT WORKING DIRECTORY IS OUTPUT FOLDER
+			self.current_path += "/output/"
+		
+		os.chdir(self.current_path)
+		
+		self.data = ""
+		self.data += "S.No,Service,Status\n"
 
-		self.data += tabulate(self.service_list, headers=['S.No.','Service', 'Status'])							# SAVING THE FINALISED DATA IN A FORMATTED WAY INTO DATA VARIABLE
-		return self.data																						# RETURNING THE VARIABLE FOR LATER USE THE DATA IN FORM OF MODULES
+		for i in self.service_list:
+			self.data+=i[0]+","+i[1]+","+i[2]+"\n"
+		with open("startup applications.csv", 'w') as startup:													# OPENNG NEW FILE TO SAVE DATA
+			startup.write(self.data)																			# WRITING DATA TO FILE 
+
+		return "Startup applications.csv"																		# RETURNING THE VARIABLE FOR LATER USE THE DATA IN FORM OF MODULES

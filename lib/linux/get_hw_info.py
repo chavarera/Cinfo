@@ -98,11 +98,11 @@ class get_hw_info:
 
 		# SAVING DATA INTO A DATA VARIABLE WHICH CAN BE RETURNED LATER
 		self.data += "-------------------- BASIC INFORMATION --------------------\n"
-		self.data += tabulate(self.cpu_info, headers=['PROPERTY', 'VALUE'])
+		self.data += tabulate(self.cpu_info, headers=['PROPERTY', 'VALUE'],tablefmt="fancy_grid")
 		self.data += "\n\n\n--------------------------------------- MEMORY STATS ---------------------------------------\n"
-		self.data += tabulate(self.mem_info[1:], headers=self.mem_info[0])
+		self.data += tabulate(self.mem_info[1:], headers=self.mem_info[0],tablefmt="fancy_grid")
 		self.data += "\n\n\n-------------- DRIVERS INSTALLED --------------\n"
-		self.data += tabulate(self.drivers_data, headers=['LIST 1','LIST 2','LIST 3','LIST 4'])
+		self.data += tabulate(self.drivers_data, headers=['LIST 1','LIST 2','LIST 3','LIST 4'],tablefmt="fancy_grid")
 
 		# RETURNING DATA VARIABLE
 		return self.data
