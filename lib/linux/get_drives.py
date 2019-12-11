@@ -83,12 +83,12 @@ class get_drives:
 		# WRITING DATA INTO A VARIABLE FOR BOOT DRIVE
 		for drive in self.drives:
 			if drive in self.boot_partition:
-				self.data += "-------------------------------------------------------- DISK-1 ( Boot Drive ) --------------------------------------------------------\n"
+				self.data += "------------------------------------------- DISK-1 ( Boot Drive ) --------------------------------------------\n"
 				self.data += "Linux Installed On : %s\n\n"%(self.boot_partition)
 				for disk in disk_list:
 					if drive in disk[0]:
 						self.temp_drive_list.append(disk)
-				self.data += tabulate(self.temp_drive_list, headers=['Partition Name', 'Total Size','Size Consumed', 'Size Remaining','Size Consumed( in percent )', 'Mounted On'])
+				self.data += tabulate(self.temp_drive_list, headers=['Partition Name', 'Total Size','Size Consumed', 'Size Remaining','Size Consumed( in percent )', 'Mounted On'],tablefmt="fancy_grid")
 				self.drives.remove(drive)
 
 		# WRITING DATA FOR REST OF DRIVES
@@ -99,7 +99,7 @@ class get_drives:
 			for disk in disk_list:
 				if drive in disk[0]:
 					self.temp_drive_list.append(disk)
-			self.data += tabulate(self.temp_drive_list, headers=['Partition Name', 'Total Size','Size Consumed', 'Size Remaining','Size Consumed( in percent )', 'Mounted On'])
+			self.data += tabulate(self.temp_drive_list, headers=['Partition Name', 'Total Size','Size Consumed', 'Size Remaining','Size Consumed( in percent )', 'Mounted On'],tablefmt="fancy_grid")
 			self.data += "\n\n\n\n\n"
 
 		return self.data
