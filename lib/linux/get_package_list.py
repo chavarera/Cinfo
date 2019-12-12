@@ -1,8 +1,8 @@
 import os
 
-class get_package:
+class get_package_list:
 	'''
-	get_package CLASS COMBINE A SINGLE METHOD AND A CONSTRUCTOR, WHICH ARE AS FOLLOWS:
+	get_package_list CLASS COMBINE A SINGLE METHOD AND A CONSTRUCTOR, WHICH ARE AS FOLLOWS:
 		1) __init__
 		2) work()
 			
@@ -48,8 +48,9 @@ class get_package:
 					self.data += str(self.count) + "," + file + "\n"		# SAVING THE PACKAGE NAME AND SERIAL NUMBER IN DATA VARIABLE
 
 
-		os.chdir(self.current_path)											# CHANGING THE PATH TO ORIGINAL WORKING DIRECTORY
-		with open("packages_installed.csv", 'w') as pack:					# OPENNG NEW FILE TO SAVE DATA
+		self.current_path += "/output/"
+		os.chdir(self.current_path)											# CHANGING CURRENT WORKING DIRECTORY
+		with open("linux_packages_installed.csv", 'w') as pack:				# OPENNG NEW FILE TO SAVE DATA
 			pack.write(self.data)											# WRITING DATA TO FILE 
 
-		return True
+		return "linux_packages_installed.csv"
