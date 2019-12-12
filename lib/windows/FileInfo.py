@@ -1,30 +1,60 @@
-try:
-    import os
-    import string
-    from ctypes import windll
-except Exception as ex:
-    print(ex)
-import timeit
-from datetime import datetime
-startTime = datetime.now()
+import os
+import win32api
 
 
 class FileInfo:
+    '''
+    class Name:
+    FileInfo
+
+    Function Names:
+    getDrives()
+    getFileList(path)
+    GetCount()
+    '''
     def getDrives(self):
-        drives = []
-        bitmask = windll.kernel32.GetLogicalDrives()
-        for letter in string.ascii_uppercase:
-            if bitmask & 1 & os.path.exists('{}:'.format(letter)):
-                drives.append(letter+":/")
-            bitmask >>= 1
+        '''
+        getDrives()
+        Function Return a object list containing all drives List
+
+        Output:
+        List-->All List of Avilable Drives
+        '''
+        drives = win32api.GetLogicalDriveStrings()
+        drives = drives.split('\000')[:-1]
         return drives
+    
     def getFileList(self,path):
-        allfiledict=[]
-        final=[]
-        fil=[final.extend(['{},{}'.format(path,os.path.join(path, name),os.path.splitext(name)[1]) for name in files]) for path, subdirs, files in os.walk(path)]
-        return final
+        '''
+       
+        Get Total File list at given path 
+        getFileList(path):
+        Example :
+            Object.getFileList(r"D:\Products\admin\images")
+            
+        Input :
+        path-->a valid system path
+
+        Output:
+        False-->If path is not Exists
+        List-->All Files List
+ 
+        '''
+        if os.path.exists(path):
+            allfiledict=[]
+            final=[]
+            fil=[final.extend(['{},{}'.format(path,os.path.join(path, name),os.path.splitext(name)[1]) for name in files]) for path, subdirs, files in os.walk(path)]
+            return final
+        
+        return False
     
     def GetCount(self):
+        '''
+        GetCount() Return all files Count in Your System
+
+        Output:
+        res-->is an dictionary containing all drives and files count
+        '''
         drives=self.getDrives()
         filelist=[]
         res=[]
@@ -36,5 +66,4 @@ class FileInfo:
             result['count']=len(flist)
             res.append(result)
         return res
-
 

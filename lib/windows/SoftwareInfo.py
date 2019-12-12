@@ -57,6 +57,12 @@ class SoftwareInfo:
             return ex
         
     def GetInstalledBrowsers(self):
+        '''
+        usage:object.GetInstalledBrowsers()
+        Output:
+        
+        browser_list-->list
+        '''
         path='SOFTWARE\Clients\StartMenuInternet'
         Hkeys=reg.HKEY_LOCAL_MACHINE
         Regkey = reg.ConnectRegistry(None, Hkeys)
