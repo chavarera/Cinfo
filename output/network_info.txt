@@ -5,17 +5,17 @@ DEVICE:                         wlan0
 
 TYPE:                           wifi
 
-HWADDR:                         94:E9:79:C7:29:ED
+HWADDR:                         Your mac here
 
 MTU:                            1500
 
 STATE:                          100 (connected)
 
-CONNECTION:                     Choot Ki Maa
+CONNECTION:                     Your Wifi Name
 
 CONPATH:                       /org/freedesktop/NetworkManager/ActiveConnection/1
 
-IP4.ADDRESS[1]:                         10.112.15.107/19
+IP4.ADDRESS[1]:                         Your IP here
 IP4.GATEWAY:                            10.112.0.1
 IP4.ROUTE[1]:                           dst = 0.0.0.0/0, nh = 10.112.0.1, mt = 600
 IP4.ROUTE[2]:                           dst = 10.112.0.0/19, nh = 0.0.0.0, mt = 600
