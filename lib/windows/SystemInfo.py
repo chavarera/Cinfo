@@ -1,10 +1,8 @@
-try:
-    import _winreg as reg
-except:
-    import winreg as reg
+from lib.windows.common.RegistryHandler import RegistryHandler
 from datetime import datetime
 import platform
-import os
+
+
 
 class SystemInfo:
     '''
@@ -35,6 +33,7 @@ class SystemInfo:
             return platform.node()
         except:
             return None
+        
     def get_reg_value(self,name):
         '''Return string value of given key name inside windows registery
 
@@ -43,17 +42,11 @@ class SystemInfo:
             
             call this method
             objectName.get_reg_value(name)
-
-            name:ProductName,InstallDate,ReleaseId etc..
         '''
-        
         try:
-            Hkeys=reg.HKEY_LOCAL_MACHINE
             path=r'SOFTWARE\Microsoft\Windows NT\CurrentVersion'
-            key = reg.OpenKey(Hkeys, path)
-            value = reg.QueryValueEx(key, name)[0]
-            reg.CloseKey(key)
-            return value
+            reg=RegistryHandler("HLM",path)
+            return reg.getValues(name)
         except:
             return None
         
@@ -70,14 +63,14 @@ class SystemInfo:
         #Get System information using Registry
         reg_data=['ProductName','InstallDate','PathName','ReleaseId','CompositionEditionID','EditionID','SoftwareType',
       'SystemRoot','ProductId','BuildBranch','BuildLab','BuildLabEx','CurrentBuild']
-
+        
         for name in reg_data:
             value=self.get_reg_value(name)
             
             if name=="CompositionEditionID":
                 system_data["CompositionID"]=value
             elif name=="InstallDate":
-                system_data[name]=datetime.fromtimestamp(value)
+                system_data[name]=str(datetime.fromtimestamp(value))
             else:
                 system_data[name]=value
         #Get system information using platform module
@@ -89,4 +82,4 @@ class SystemInfo:
             system_data[names]=value
 
         return system_data
-    
+

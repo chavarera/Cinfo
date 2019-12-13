@@ -1,4 +1,4 @@
-from subprocess import getoutput
+from lib.windows.common.CommandHandler import CommandHandler
 import math
 import wmi
 
@@ -10,14 +10,8 @@ class StorageInfo:
     call this method:
         objectName.getStorageinfo()
     '''
-    def getCmdOutput(self,cmd):
-        '''
-        Accept the Command prompt query and Return the Output into text format
-        '''
-        try:
-            return getoutput(cmd)
-        except Exception as ex:
-            return ex
+    def __init__(self):
+        self.cmd=CommandHandler()
         
     def convert_size(self,size_bytes):
        '''
@@ -30,12 +24,13 @@ class StorageInfo:
        p = math.pow(1024, i)
        s = round(size_bytes / p, 2)
        return "%s %s" % (s, size_name[i])
+    
     def getDiskSize(self):
         '''
         Return the Total Disk Size 
         '''
         cmd='wmic diskdrive GET caption,size'
-        result=self.getCmdOutput(cmd)
+        result=self.cmd.getCmdOutput(cmd)
         list_disk=[]
         for i in result.splitlines():
             splited_text=i.split()
@@ -65,12 +60,13 @@ class StorageInfo:
             ram_sizes['PhysicalMemory']=self.convert_size(int(i.TotalPhysicalMemory))
             ram.append(ram_sizes)
         return ram
+    
     def getLogicalDisk(self):
         '''
         Returns the Disk partitions details
         '''
         cmd='wmic logicaldisk get size,freespace,caption'
-        result=self.getCmdOutput(cmd)
+        result=self.cmd.getCmdOutput(cmd)
         drives=[]
         for i in result.splitlines():
             splited_text=i.split()
