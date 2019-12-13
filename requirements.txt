@@ -1,4 +1,4 @@
 pypiwin32==223
 pywin32==227
 WMI==1.4.9
-
+filetype
