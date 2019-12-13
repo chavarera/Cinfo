@@ -1,8 +1,5 @@
 S.No,Browser Name
-1,chromium
-2,firefox-esr
-3,git-web--browse
-4,gnome-www-browser
-5,google-chrome
-6,google-chrome-stable
-7,x-www-browser
+1,firefox-esr
+2,git-web--browse
+3,google-chrome
+4,google-chrome-stable
