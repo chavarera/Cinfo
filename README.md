@@ -63,7 +63,7 @@ This file contains all working code for linux system.
 ```
 5. :page_facing_up: Windowsinfo.py:
 ```
-This file contains all working code for linux system. 
+This file contains all working code for windows system. 
 ```
 6. :page_facing_up: Cinfo.py:
 ```
