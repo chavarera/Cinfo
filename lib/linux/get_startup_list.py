@@ -1,3 +1,8 @@
+'''
+	Author : Deepak Chauhan
+	GitHub : https://github.com/royaleagle73
+	Email : 2018PGCACA63@nitjsr.ac.in
+'''
 import os
 
 class get_startup_list:

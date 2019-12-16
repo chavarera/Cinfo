@@ -27,6 +27,7 @@ Software Information
 Storage Information
 Hardware Information
 File Information
+Ports Information
 ```
 and help you to export into text file.
 
@@ -49,27 +50,45 @@ if you want to create any class add it in following directory
 ```
 2. :file_folder: img :
 ```
-contains all project images.
+contains all images related to project and screenshots of Input and Output screen.
 ```
 
 3. :file_folder: output :
 ```
 Here final generated file will added
 ```
-4. :page_facing_up: Cinfo.py:
+4. :page_facing_up: Linuxinfo.py:
+```
+This file contains all working code for linux system. 
+```
+5. :page_facing_up: Windowsinfo.py:
+```
+This file contains all working code for windows system. 
+```
+6. :page_facing_up: Cinfo.py:
 ```
 This file is start of this project . 
-simply run this code to execute this projects.
+simply run this code to execute this project.
 ```
-
 
 ### Install
 
-Download or clone this repository and extract in your Local Machine go to the extracted folder.
-use Windows console and run 
+Download or clone this repository and extract in your Local Machine and go to the extracted folder.
+use Windows console and install all requirements using command.. 
 
+On any Operating system, run this command to install all dependencies :
+```
+pip3 install -r requirements.txt
+```
+Now run the program by following command in any operating system of your choice :
+
+In windows:
 ```
 python Cinfo.py
+```
+In linux / mac OS:
+```
+python3 Cinfo.py
 ```
 
 ![run](https://github.com/chavarera/Cinfo/blob/master/img/run.PNG)
