@@ -1,4 +1,6 @@
+from lib.windows.common.CommandHandler import CommandHandler
 from lib.windows.common.RegistryHandler import RegistryHandler
+from lib.windows.common import Utility as utl
 from datetime import datetime
 import platform
 
@@ -13,6 +15,15 @@ class SystemInfo:
         objectName.GetSystemInfo()
     
     '''
+    def __init__(self):
+        self.cmd=CommandHandler()
+        
+    def Preprocess(self,text):
+        cmd=f'wmic {text} list /format:csv'
+        Command_res=self.cmd.getCmdOutput(cmd)
+        result=utl.CsvTextToDict(Command_res)
+        return result
+
     def getPlatform(self,name):
         '''Return a string machine platform windows or ubuntu
 
@@ -80,6 +91,8 @@ class SystemInfo:
             value=self.getPlatform(name)
             names=platform_name[idx]
             system_data[names]=value
-
+        system_categories=['OS','TIMEZONE','BOOTCONFIG','COMPUTERSYSTEM','STARTUP']
+        for part in system_categories:
+            system_data[part]=self.Preprocess(part)
         return system_data
 

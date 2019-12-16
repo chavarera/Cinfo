@@ -1,6 +1,7 @@
 import socket
 from lib.windows.common.CommandHandler import CommandHandler
 from uuid import getnode as get_mac
+from lib.windows.common import Utility as utl
 from lib.windows import SystemInfo 
 #import SystemInfo
 import re
@@ -66,7 +67,12 @@ class NetworkInfo:
             return macid
         except Exception as ex:
             return None
-            
+    def Preprocess(self,text):
+        cmd=f'wmic {text} list /format:csv'
+        Command_res=self.cmd.getCmdOutput(cmd)
+        result=utl.CsvTextToDict(Command_res)
+        return result
+    
     def networkinfo(self):
         '''
         This method retuns Complete Network Related Information
@@ -78,5 +84,7 @@ class NetworkInfo:
         network_info['HostNodeName']=self.getNetworkName()
         network_info['IpAddress']=self.getIpAddress()
         network_info['MacAddress']=self.getMacAddress()
-
+        network_categories=['netclient','NETPROTOCOL','nic','RDNIC','NICCONFIG']
+        for part in network_categories:
+            network_info[part]=self.Preprocess(part)
         return network_info

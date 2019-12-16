@@ -1,5 +1,6 @@
 from lib.windows.common.CommandHandler import CommandHandler
 import math
+from lib.windows.common import Utility as utl
 import wmi
 
 class StorageInfo:
@@ -61,6 +62,12 @@ class StorageInfo:
             ram.append(ram_sizes)
         return ram
     
+    def Preprocess(self,text):
+        cmd=f'wmic {text} list /format:csv'
+        Command_res=self.cmd.getCmdOutput(cmd)
+        result=utl.CsvTextToDict(Command_res)
+        return result
+    
     def getLogicalDisk(self):
         '''
         Returns the Disk partitions details
@@ -87,5 +94,9 @@ class StorageInfo:
         sinfo['Partions']=self.getLogicalDisk()
         sinfo['Ram']=self.getRamSize()
         sinfo['DiskSize']=self.getDiskSize()
+        
+        storage_catgories=['memoryphiscial','logicaldisk','CDROM','DEVICEMEMORYADDRESS','DISKDRIVE','DISKQUOTA','DMACHANNEL','LOGICALDISK','MEMCACHE','MEMORYCHIP','MEMPHYSICAL','PAGEFILE','PARTITION','VOLUME']
+        for part in storage_catgories:
+            sinfo[part]=self.Preprocess(part)
         return sinfo
         
