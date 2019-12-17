@@ -1,7 +1,7 @@
 
 from lib.windows.common.CommandHandler import CommandHandler
 from lib.windows.common.RegistryHandler import RegistryHandler
-
+from lib.windows.common import Utility as utl
 class HardwareInfo:
     '''
     class_Name:HardwareInfo
@@ -15,6 +15,13 @@ class HardwareInfo:
     def __init__(self):
         self.cmd=CommandHandler()
         
+    def Preprocess(self,text):
+        cmd=f'wmic {text} list /format:csv'
+        Command_res=self.cmd.getCmdOutput(cmd)
+        result=utl.CsvTextToDict(Command_res)
+        return result
+
+    
     def getBiosInfo(self):
         '''
         Usage :object.getBiosInfo()
@@ -27,44 +34,20 @@ class HardwareInfo:
                 'SMBIOSBIOSVe': 'XXXXXXXX
                 }
         '''
-        biosinfo={}
-        cmd='wmic BIOS get Manufacturer,SerialNumber,SMBIOSBIOSVersion'
-        result=self.cmd.getCmdOutput(cmd)
-        data=[val.split() for val in result.splitlines() if len(val.split())==3]
-        for key,val in zip(data[0],data[1]):
-            bios={}
-            if key=="SMBIOSBIOSVersion":
-                biosinfo["SMBIOSBIOSVe"]=val
-            else:
-                biosinfo[key]=val
+        biosinfo=self.Preprocess('bios')
         return biosinfo
     
+    def CsProduct(self):
+        computer_systemP=self.Preprocess('CSPRODUCT')
+        return computer_systemP
+    
     def getCpuInfo(self):
-        '''
-        Usage :object.getCpuInfo()
-        Find CPU Info and Return Dictionary Object
-        
-        Output:
-        cpuinfo--> An Dictionary Object
-        Sample-->{'Name OF The cpu': 'XXXXXXXXX',
-                'Number Of Cores': '2',
-                'Logical Proces.': '2'}
-
-        '''
-        cpuinfo={}
-        cmd='wmic CPU get Name,NumberOfCores,NumberOfLogicalProcessors'
-        result=self.cmd.getCmdOutput(cmd)
-        data=result.splitlines()
-        n=0
-        for i in data[0].split():
-            if n==0:
-                cpuinfo["Name of the cpu"]=" ".join(data[2].split()[:-2])
-            if n==1:
-                cpuinfo["Number of cores"]=data[2].split()[-2]
-            if n==2:
-                cpuinfo["Logical proces."]=data[2].split()[-1]
-            n=n+1    
+        cpuinfo=self.Preprocess('cpu')
         return cpuinfo
+    
+    def getBaseboard(self):
+        Baseboard=self.Preprocess('BASEBOARD')
+        return Baseboard
     
     def usbPortInfo(self):
         '''
@@ -89,10 +72,13 @@ class HardwareInfo:
         usage:object.getHardwareinfo()
         Return bios,cpu,usb information
         '''
-        hardwarinfo={}
-        hardwarinfo['bios']=self.getBiosInfo()
-        hardwarinfo['cpu']=self.getCpuInfo()
-        hardwarinfo['usb']=self.usbPortInfo()
+        hardwarinfo={
+                     'usb':self.usbPortInfo()
+            }
+        Hardware_parameter=['onboarddevice','bios','cpu','BASEBOARD','CSPRODUCT','PORTCONNECTOR','SYSTEMSLOT']
+        for part in Hardware_parameter:
+            hardwarinfo[part]=self.Preprocess(part)
+        
         return hardwarinfo
 
 

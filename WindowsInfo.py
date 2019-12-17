@@ -1,4 +1,6 @@
-from lib.windows import SystemInfo,NetworkInfo,SoftwareInfo,StorageInfo,HardwareInfo,FileInfo
+from lib.windows import SystemInfo,NetworkInfo,SoftwareInfo,StorageInfo
+from lib.windows import HardwareInfo,FileInfo,DeviceInfo,MiscInfo,ServiceInfo
+from lib.windows.common import Utility as utl
 import time
 import pandas as pd
 import json
@@ -8,22 +10,19 @@ def Display(d, indent=0):
 
 Cinfo={}
 
-sys_info=SystemInfo.SystemInfo()
-Cinfo['system']=sys_info.GetSystemInfo()
+Container={'system':SystemInfo.SystemInfo().GetSystemInfo(),
+           'hardware':HardwareInfo.HardwareInfo().getHardwareinfo(),
+           'network':NetworkInfo.NetworkInfo().networkinfo(),
+           'software':SoftwareInfo.SoftwareInfo().getSoftwareList(),
+           'device':DeviceInfo.DeviceInfo().GetDeviceInfo(),
+           'webbrowser':SoftwareInfo.SoftwareInfo().GetInstalledBrowsers(),
+           'storage':StorageInfo.StorageInfo().getStorageinfo(),
+           'service':ServiceInfo.ServiceInfo().getServiceInfo()
+           }
 
-hard_info=HardwareInfo.HardwareInfo()
-Cinfo['hardware']=hard_info.getHardwareinfo()
-
-net_info=NetworkInfo.NetworkInfo()
-Cinfo['network']=net_info.networkinfo()
-
-soft_info=SoftwareInfo.SoftwareInfo()
-Cinfo['software']=soft_info.getSoftwareList()
-
-Cinfo['webbrowser']=soft_info.GetInstalledBrowsers()
-
-storage_info=StorageInfo.StorageInfo()
-Cinfo['storage']=storage_info.getStorageinfo()
-
-cdata=Display(Cinfo)
+#Pretty Print Result
+cdata=Display(Container)
 print(cdata)
+
+#Export to Json File
+utl.ExportTOJson(cdata)
