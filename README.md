@@ -12,7 +12,7 @@
 ## Table of Contents
 - [About](#About)
 - [Prerequisite](#Prerequisite)
-- [Structure](#Structure)
+
 - [Install](#install)
 - [Contributors](#Contributors)
 - [Help](#Help)
@@ -40,36 +40,7 @@ Python ver: 3.x
 Operating: Windows,Linux
 ```
 
-## Structure
 
-1. :file_folder: lib :
-```
-if you want to create any class add it in following directory
-1.windows:contains All required custom modules
-2.linux  : contains All required custom modules
-```
-2. :file_folder: img :
-```
-contains all images related to project and screenshots of Input and Output screen.
-```
-
-3. :file_folder: output :
-```
-Here final generated file will added
-```
-4. :page_facing_up: Linuxinfo.py:
-```
-This file contains all working code for linux system. 
-```
-5. :page_facing_up: Windowsinfo.py:
-```
-This file contains all working code for windows system. 
-```
-6. :page_facing_up: Cinfo.py:
-```
-This file is start of this project . 
-simply run this code to execute this project.
-```
 
 ### Install
 
