@@ -45,6 +45,7 @@ WORK() DOCFILE:
 	4) REFINING NAME FROM THE LIST WE GET.
 	5) RETURNING THE LIST.
 		'''
+		ret_data = {"List of Installed Browsers":[]}
 		self.command_output = os.popen("apropos 'web browser'").read()								# COLLECTING DATA FROM COMMANDLINE, AND SAVING IT INTO A STRING.
 		self.browsers = self.command_output.split('\n')												# SPLITTING DATA ACCORDING TO A NEW LINE AND SAVING ALL LINES 'BROWSER' NAMED LIST
 		self.browsers.pop()																			# REMOVING LAST REDUNDANT ELEMENT
@@ -60,5 +61,7 @@ WORK() DOCFILE:
 		os.chdir(self.current_path)																	# CHANGING CURRENT WORKING DIRECTORY
 		with open("Installed Browser.csv","w") as browser:											# SAVNG DATA INTO FILE
 			browser.write(self.data)
-		
-		return "Installed Browser.csv"																# RETURNING THE LIST
+		self.browsers.insert(0,"Installed Browsers")
+		for i in self.browsers:
+			ret_data["List of Installed Browsers"].append([i])
+		return ret_data																					# RETURNING THE LIST

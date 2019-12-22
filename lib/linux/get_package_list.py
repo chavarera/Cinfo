@@ -44,18 +44,19 @@ class get_package_list:
 		'''
 		# CHANGING WORKING DIRECTORY
 		os.chdir(self.file_path)											# CHANGING CURRENT WORKING DIRECTORY
-
+		ret_data = {"List of Installed Applications" : [["Applications Name"]]}
 		# LISTING ALL FILES AND SERIAL NUMBER EXCLUDING FOLDERS
 		for file in self.files_found:										# CHECKING EACH SCANNED FILE ONE BY ONE
 			if not os.path.isdir(file):										# CHECKING IS SCANNED FILE IS A FILE OR FOLDER
 				if not file.endswith(".sh"):									# REMOVING SCRIPT FILES
 					self.count += 1											# IF IT IS A FILE, COUNTING INCREASES BY 1
 					self.data += str(self.count) + "," + file + "\n"		# SAVING THE PACKAGE NAME AND SERIAL NUMBER IN DATA VARIABLE
+					ret_data["List of Installed Applications"].append([file])
 
-
-		self.current_path += "/output/"
+		if self.current_path.find("output") == -1:																# CHECKING IF CURRENT WORKING DIRECTORY IS OUTPUT FOLDER
+			self.current_path += "/output/"
 		os.chdir(self.current_path)											# CHANGING CURRENT WORKING DIRECTORY
 		with open("linux_packages_installed.csv", 'w') as pack:				# OPENNG NEW FILE TO SAVE DATA
 			pack.write(self.data)											# WRITING DATA TO FILE 
 
-		return "linux_packages_installed.csv"
+		return ret_data

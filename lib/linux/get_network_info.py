@@ -32,7 +32,8 @@ class get_network_info:
 		'''
 
 		self.data += os.popen("nmcli -p device show").read()													# GETTING DATA FROM COMMAND LINE
-		self.data = self.data.replace("-","")																	# REPLACING REDUNDANT DATA
+		self.data = self.data.replace("-","")	
+		self.data = self.data.replace("=","")	
 		self.data = self.data.replace("GENERAL.","")
 		if self.current_path.find("output") == -1:																# CHECKING IF CURRENT WORKING DIRECTORY IS OUTPUT FOLDER
 			self.current_path += "/output/"
@@ -40,3 +41,6 @@ class get_network_info:
 		with open("network_info.txt","w") as network:															# SAVNG DATA INTO FILE
 			network.write(self.data)
 		return "network_info.txt"																				# RETURNING FILE NAME FOR SUCCESSFUL RETURNS
+
+l = get_network_info()
+l.work()
