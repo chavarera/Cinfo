@@ -8,11 +8,38 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from lib.windows import SystemInfo,NetworkInfo,SoftwareInfo,StorageInfo
+from lib.windows import HardwareInfo,FileInfo,DeviceInfo,MiscInfo,ServiceInfo
+from lib.windows.common import Utility as utl
+import json
+import os
+import pickle
 
+    
 class Ui_Cinfo(object):
     def __init__(self):
-        self.module_list=['system','hardware','network','software','device','webbrowser','storage','service']
-       
+        self.module_list = ['system','hardware','network','software','device','storage','service']
+        self.submodules = []
+        self.modules=""
+        self.current_selected = []
+        self.os = os.name
+        self.cheklist = []
+        self.checked_modules = []
+        self.fetchedData = self.OpenPickle()
+        self.filterdata = []
+        
+    def closeEvent(self, event):
+        msg = QtWidgets.QMessageBox()
+        msg.setIcon(QtWidgets.QMessageBox.Question)
+        msg.setInformativeText("Are you sure you want to close this window?")
+        msg.setStandardButtons(QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.Cancel)
+        msg.setWindowTitle("Are you sure?")
+        replay=msg.exec_()
+        if(replay==QtWidgets.QMessageBox.Yes):
+            exit(0)
+        else:
+            pass
+        
     def setupUi(self, Cinfo):
         Cinfo.setObjectName("Cinfo")
         Cinfo.resize(640, 461)
@@ -46,6 +73,8 @@ class Ui_Cinfo(object):
         self.result_tableWidget.setObjectName("result_tableWidget")
         self.result_tableWidget.setColumnCount(0)
         self.result_tableWidget.setRowCount(0)
+        
+
         self.horizontalLayout.addWidget(self.result_tableWidget)
         self.gridLayout.addLayout(self.horizontalLayout, 0, 2, 1, 1)
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
@@ -193,24 +222,119 @@ class Ui_Cinfo(object):
         self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionExit)
         self.toolBar.addSeparator()
-
+        self.comboBoxNew = QtWidgets.QComboBox()
+        self.Modules_verticalLayout.addWidget(self.comboBoxNew)
+        self.comboBoxNew.currentTextChanged.connect(self.on_SubModule_change)
         self.retranslateUi(Cinfo)
         QtCore.QMetaObject.connectSlotsByName(Cinfo)
         
-        
-        
+        self.actionJson.triggered.connect(self.ExportToJson)
+        self.actionExit.triggered.connect(self.closeEvent)
         self.AddModules()
         
+    def ShowAlertMsg(self,message,types):
+        if types=="success":
+            alert_icon=QtWidgets.QMessageBox.Information
+            alert_type="Success"
+        if types=="error":
+            alert_icon=QtWidgets.QMessageBox.Critical
+            alert_type="Error"
+            
+        message=message   
+        msg = QtWidgets.QMessageBox()
+        msg.setIcon(alert_icon)
+        msg.setInformativeText(str(message))
+        msg.setWindowTitle(alert_type)
+        msg.exec_()
+
+    def OpenPickle(self,filepath='result.pickle'):
+      try:
+           with open(filepath,"rb") as file:
+              return pickle.load(file)
+      except:
+          print("First Run Follwing command on Command Prompt \npython Cinfo.py")
+          exit(0)
+        
+    def FilterRecord(self,filters):
+        if len(filters)>0:
+           self.filterdata=[self.fetchedData[module] for module in filters]
+           
+    def ExportToJson(self):
+        status,res=utl.ExportTOJson(self.fetchedData)
+        if status:
+            self.ShowAlertMsg(res,"success")
+        else:
+            self.ShowAlertMsg(res,"error")
+        
+    def SubFilter(self,module,subFilter):
+        if len(subFilter)>0:
+            self.current_selected=self.fetchedData[module][subFilter]
+            
+    def ModuleInfo(self):
+        checkeds=[val.isChecked() for val in self.cheklist]
+        self.checked_modules=[val for status,val in zip(checkeds,self.module_list) if status]
+        self.modules=self.checked_modules[0]
+        self.FilterRecord(self.checked_modules)
+        self.SetData(self.checked_modules)
+        
+    def on_SubModule_change(self):
+       
+        current_submodule=self.comboBoxNew.currentText()
+        self.SubFilter(self.modules,current_submodule)
+        self.result_tableWidget.setColumnCount(2)
+        keys=['Parameter','Value']
+        
+        all_values=self.current_selected[0].keys()
+        rows_count=0
+        self.result_tableWidget.setRowCount(0)
+        if len(self.current_selected)==1:
+            self.result_tableWidget.insertRow(0)
+            self.result_tableWidget.setHorizontalHeaderLabels(keys)
+            for result in self.current_selected:
+                vals=result.values()
+                for idx,value in enumerate(result.keys()):
+                    if result[value]!="":
+                        self.result_tableWidget.insertRow(rows_count)
+                        self.result_tableWidget.setItem(rows_count, 0, QtWidgets.QTableWidgetItem(str(value)))
+                        self.result_tableWidget.setItem(rows_count, 1, QtWidgets.QTableWidgetItem(str(result[value])))
+                        rows_count+=1
+        else:
+            keys=self.current_selected[0].keys()
+            self.result_tableWidget.setColumnCount(len(keys))
+            self.result_tableWidget.setHorizontalHeaderLabels(keys)
+            for result in self.current_selected:
+            
+                self.result_tableWidget.insertRow(rows_count)
+                vals=result.values()
+                for idx,value in enumerate(vals):
+                    self.result_tableWidget.setItem(rows_count, idx, QtWidgets.QTableWidgetItem(str(value)))
+                rows_count+=1
+
+        self.result_tableWidget.resizeColumnsToContents()     
+
+        
+    def SetData(self,modules):
+        for i in range(self.comboBoxNew.count()):
+            self.comboBoxNew.removeItem(i)
+        self.result_tableWidget.setRowCount(0)
+        self.submodules=[key for key,value in self.filterdata[0].items()]
+        self.comboBoxNew.addItems(self.submodules)
+       
+        
+              
     def AddModules(self):
         font = QtGui.QFont()
         font.setPointSize(12)
+        test=[]
         for modules in self.module_list:
-            self.checkBoxPingSeconds = QtWidgets.QCheckBox(Cinfo)
-            self.checkBoxPingSeconds.setObjectName(modules)
-            self.checkBoxPingSeconds.setText(modules)
-            self.checkBoxPingSeconds.setFont(font)
-            self.Modules_verticalLayout.addWidget(self.checkBoxPingSeconds)
-        
+            self.radioButton = QtWidgets.QRadioButton(Cinfo)
+            self.radioButton.setObjectName(modules)
+            self.radioButton.setText(modules)
+            self.radioButton.setFont(font)
+            self.radioButton.toggled.connect(self.ModuleInfo)
+            self.Modules_verticalLayout.addWidget(self.radioButton)
+            self.cheklist.append(self.radioButton)
+
     def retranslateUi(self, Cinfo):
         _translate = QtCore.QCoreApplication.translate
         Cinfo.setWindowTitle(_translate("Cinfo", "Cinfo"))
@@ -231,6 +355,7 @@ class Ui_Cinfo(object):
         self.actionRefresh.setToolTip(_translate("Cinfo", "refresh"))
         self.actionRefresh.setShortcut(_translate("Cinfo", "Ctrl+F5"))
         self.actionExit.setText(_translate("Cinfo", "Exit"))
+
         self.actionExit.setToolTip(_translate("Cinfo", "Exit Window"))
         self.actionExit.setShortcut(_translate("Cinfo", "Ctrl+Q"))
         self.actionAbout.setText(_translate("Cinfo", "About"))

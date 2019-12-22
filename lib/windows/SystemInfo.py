@@ -92,7 +92,9 @@ class SystemInfo:
             names=platform_name[idx]
             system_data[names]=value
         system_categories=['OS','TIMEZONE','BOOTCONFIG','COMPUTERSYSTEM','STARTUP']
+        Final_result={}
+        Final_result['SystemData']=[system_data]
         for part in system_categories:
-            system_data[part]=self.Preprocess(part)
-        return system_data
+            Final_result[part]=self.Preprocess(part)
+        return Final_result
 

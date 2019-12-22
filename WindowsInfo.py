@@ -1,28 +1,35 @@
 from lib.windows import SystemInfo,NetworkInfo,SoftwareInfo,StorageInfo
 from lib.windows import HardwareInfo,FileInfo,DeviceInfo,MiscInfo,ServiceInfo
-from lib.windows.common import Utility as utl
-import time
-import pandas as pd
+import os
 import json
+import pickle
 
 def Display(d, indent=0):
    return json.dumps(d,sort_keys=True, indent=4)
 
-Cinfo={}
 
-Container={'system':SystemInfo.SystemInfo().GetSystemInfo(),
-           'hardware':HardwareInfo.HardwareInfo().getHardwareinfo(),
-           'network':NetworkInfo.NetworkInfo().networkinfo(),
-           'software':SoftwareInfo.SoftwareInfo().getSoftwareList(),
-           'device':DeviceInfo.DeviceInfo().GetDeviceInfo(),
-           'webbrowser':SoftwareInfo.SoftwareInfo().GetInstalledBrowsers(),
-           'storage':StorageInfo.StorageInfo().getStorageinfo(),
-           'service':ServiceInfo.ServiceInfo().getServiceInfo()
-           }
+def SavePickle(data):
+   with open('result.pickle','wb') as file:
+         pickle.dump(data,file)
+         
+def CallData():
+   Container={'system':SystemInfo.SystemInfo().GetSystemInfo(),
+              'hardware':HardwareInfo.HardwareInfo().getHardwareinfo(),
+              'network':NetworkInfo.NetworkInfo().networkinfo(),
+              'software':SoftwareInfo.SoftwareInfo().getSoftwareList(),
+              'device':DeviceInfo.DeviceInfo().GetDeviceInfo(),
+              'storage':StorageInfo.StorageInfo().getStorageinfo(),
+              'service':ServiceInfo.ServiceInfo().getServiceInfo()
+              }
+   #Pretty Print Result
+   cdata=Display(Container)
+   SavePickle(Container)
 
-#Pretty Print Result
-cdata=Display(Container)
-print(cdata)
-
-#Export to Json File
-utl.ExportTOJson(cdata)
+   
+try:
+   CallData()
+except Exception as ex:
+   print(ex)
+else:
+   print("Now Run \npython MainUi.py")
+   
