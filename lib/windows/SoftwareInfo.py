@@ -52,10 +52,7 @@ class SoftwareInfo:
         Get All installed Softwae in th list format with name,version,publisher
         '''
         try:
-            all_installed_apps={}
-            all_installed_apps["installedPrograms"]=self.getReg_keys(reg.KEY_WOW64_32KEY)+(self.getReg_keys(reg.KEY_WOW64_64KEY))
-            all_installed_apps["WebBrowsers"]=self.GetInstalledBrowsers()
-            return all_installed_apps
+           return  self.getReg_keys(reg.KEY_WOW64_32KEY)+self.getReg_keys(reg.KEY_WOW64_64KEY)
         except Exception as ex:
             return ex
         
@@ -71,15 +68,13 @@ class SoftwareInfo:
         Regkey = reg.ConnectRegistry(None, Hkeys)
         key = reg.OpenKey(Regkey, path,0, reg.KEY_READ | reg.KEY_WOW64_32KEY)
         key_count = reg.QueryInfoKey(key)[0]
-        browser={}
         browser_list=[]
         for i in range(key_count):
             singsoft={}
             try:
                 keyname=reg.EnumKey(key, i)
-                singsoft['id']=i
-                singsoft['Name']=keyname
-                browser_list.append(singsoft)
+                browser_list.append(keyname)
             except Exception as ex:
                 continue
         return browser_list
+

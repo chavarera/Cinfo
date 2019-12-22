@@ -29,6 +29,7 @@ class get_startup_list:
 				7) FIALLY FULL DATA IS WRITTEN INTO A SINGLE VARIABLE.
 				8) VARIABLE IS RETURNED AS RETURNED VALUE FROM THE FUNCTION.
 		'''
+		ret_data = {"List of Startup Programs" : [["Package Name","Status"]]}
 		self.services = os.popen("systemctl list-unit-files --type=service").read()								# EXECUTING COMMAND AND SAVING THE OUTPUT IN STRING VARIABLE
 		self.service_list = self.services.split('\n')															# SPLITTING THE SERVICES DATA INTO THE LIST
 		try:
@@ -71,7 +72,7 @@ class get_startup_list:
 
 		for i in self.service_list:
 			self.data+=i[0]+","+i[1]+","+i[2]+"\n"
+			ret_data["List of Startup Programs"].append([i[1],i[2]])
 		with open("startup applications.csv", 'w') as startup:													# OPENNG NEW FILE TO SAVE DATA
 			startup.write(self.data)																			# WRITING DATA TO FILE 
-
-		return "Startup applications.csv"																		# RETURNING THE VARIABLE FOR LATER USE THE DATA IN FORM OF MODULES
+		return ret_data																		# RETURNING THE VARIABLE FOR LATER USE THE DATA IN FORM OF MODULES

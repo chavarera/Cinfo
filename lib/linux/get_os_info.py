@@ -31,6 +31,8 @@ class get_os_info:
 		self.details = "------------------------------ OS Information ------------------------------\n"
 
 	def work(self):
+		data = {"OS Information" : [],"CPU Information" : [],"Users In Machine" : [],}
+		temp = []
 		'''
 		work() DOCINFO:
 		THIS FUNCTIONS WORKS IN THE FOLLOWING WAYS:
@@ -55,7 +57,13 @@ class get_os_info:
 
 		temp_container.append(os1[0].split(':'))
 		temp_container.append(os1[1][1:].split(':'))
+		if temp_container[-1] == '':
+			temp_container.pop()
 		self.details += tabulate(temp_container, headers = ["Property", "Value"],tablefmt="fancy_grid")
+		temp = temp_container.copy()
+		temp.insert(0,["Property", "Value"])
+		data["OS Information"].extend(temp)
+		#print(temp)
 		temp_container.clear()
 
 		self.details += "\n\n\n------------------------------ CPU Information ------------------------------\n"
@@ -72,9 +80,14 @@ class get_os_info:
 		
 		for fetch in range(10, len(os2)):
 			temp_container.append(os2[fetch].split(':'))
-
+		if temp_container[-1] == '':
+			temp_container.pop()
 		self.details += tabulate(temp_container, headers = ["Property", "Value"],tablefmt="fancy_grid")
-		
+		temp = temp_container.copy()
+		temp.insert(0,["Property", "Value"])
+		#print(temp)
+		data["CPU Information"].extend(temp)
+
 		# FETCHING USERNAMES FROM OS
 		user_name_string = os.popen("lslogins -u").read()
 		user_name_list = user_name_string.split('\n')
@@ -90,9 +103,16 @@ class get_os_info:
 		for user in final_usernames:
 			if user != '':
 				temp_container.append([user])
-				
+		
+		if temp_container[-1] == '':
+			temp_container.pop()
 		self.details += "\n\n\n------------------------------ Users in Machine ------------------------------\n"
 		self.details += tabulate(temp_container, headers = ["Usernames"],tablefmt="fancy_grid")
+		temp = temp_container.copy()
+		temp.insert(0,["Usernames"])
+		#print(temp)
+		data["Users In Machine"].extend(temp)
 
 		# RETURNING ALL FINALISED DETAILS
-		return self.details
+		# print(self.details)
+		return data

@@ -95,7 +95,7 @@ class StorageInfo:
         sinfo['Ram']=self.getRamSize()
         sinfo['DiskSize']=self.getDiskSize()
         
-        storage_catgories=['logicaldisk','CDROM','DEVICEMEMORYADDRESS','DISKDRIVE','DISKQUOTA','DMACHANNEL','LOGICALDISK','MEMCACHE','MEMORYCHIP','MEMPHYSICAL','PAGEFILE','PARTITION','VOLUME']
+        storage_catgories=['memoryphiscial','logicaldisk','CDROM','DEVICEMEMORYADDRESS','DISKDRIVE','DISKQUOTA','DMACHANNEL','LOGICALDISK','MEMCACHE','MEMORYCHIP','MEMPHYSICAL','PAGEFILE','PARTITION','VOLUME']
         for part in storage_catgories:
             sinfo[part]=self.Preprocess(part)
         return sinfo

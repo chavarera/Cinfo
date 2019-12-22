@@ -52,9 +52,10 @@ class list_files:
 		RESIDES,
 		2) IT RETURNS NUMBER OF FILES FOUND AS A RETURN VALUE. 
 		'''
+		ret_data = {"Files":[]}
 		print("Starting work....", end='\r')
-		for (root, dirs, files) in os.walk("/", topdown=True):		# FINDING ALL FIES IN ROOT DIRECTORY
-			file_list = [file+","+root+file for file in files]		# MODIFYING FILE LIST ACCORDING TO REQUIRED FORMAT
+		for (root, dirs, files) in os.walk('/home/royal/Documents/KWOC/Cinfo', topdown=True):		# FINDING ALL FIES IN ROOT DIRECTORY
+			file_list = [file+","+root+'/'+file for file in files]		# MODIFYING FILE LIST ACCORDING TO REQUIRED FORMAT
 			self.all_data.extend(file_list)							# SAVING ALL FILES FOUND IN CURRENT DIRECTORY INTO ALL_DATA LIST WHICH IS GLOBAL LIST FOR ALL FILES	
 			for file in files:
 				if '.' in file:
@@ -108,8 +109,9 @@ class list_files:
 		os.chdir(self.current_path)
 
 		with open("File list.csv", "w") as output:					# OOPENING FILE TO BE WRITTEN IN WRITE MODE
-			output.write(data)										# DATA VARIABLE IS WRITTEN HERE INTO FILE
-
+			output.write(data)	
+												# DATA VARIABLE IS WRITTEN HERE INTO FILE
+		ret_data["Files"] =[i.split(',') for i in data.split('\n')]
 		data = {}
 		data["Total Files"] = []
 		data["Total Files"].append({
@@ -132,5 +134,14 @@ class list_files:
 
 		with open("File Overview.json","w") as filecount:
 			json.dump(data,filecount)
-		
-		return True
+
+		## Preparing dictionary for UI
+		tempList = []
+		for eachDict in data["Category"]:
+			tempList.append([list(eachDict.keys())[0] , str(list(eachDict.values())[0])])
+		data["Category"] = tempList
+		data["Category"].insert(0,["Total Files" , str(list(data["Total Files"][0].values())[0])])
+		data["Category"].insert(0,["File Type", "No of Files Found"])
+		ret_data["Files Overview"] = data["Category"]
+
+		return ret_data

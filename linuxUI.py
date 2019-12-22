@@ -6,7 +6,8 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-
+import os
+import pandas as pd
 from PyQt5 import QtCore, QtGui, QtWidgets
 from lib.linux import get_browsers,get_drives,get_hw_info,get_network_info,get_os_info,get_package_list,get_ports,get_startup_list,list_files
 
@@ -22,50 +23,63 @@ class Ui_Cinfo(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        ## For Listing files
-        self.listfIles = QtWidgets.QCheckBox(self.centralwidget)
-        self.listfIles.setObjectName("listfIles")
-        self.verticalLayout_2.addWidget(self.listfIles)
-        ##  For Startup Applications
-        self.startUpapplications = QtWidgets.QCheckBox(self.centralwidget)
-        self.startUpapplications.setObjectName("startUpapplications")
-        self.verticalLayout_2.addWidget(self.startUpapplications)
-        ##  For Installed Applications
-        self.instaLledApplications = QtWidgets.QCheckBox(self.centralwidget)
-        self.instaLledApplications.setObjectName("instaLledApplications")
-        self.verticalLayout_2.addWidget(self.instaLledApplications)
-        ##  For Network
-        self.networkInfo = QtWidgets.QCheckBox(self.centralwidget)
-        self.networkInfo.setObjectName("networkInfo")
-        self.verticalLayout_2.addWidget(self.networkInfo)
-        ##  About Your Machine
-        self.aboutYourMachine = QtWidgets.QCheckBox(self.centralwidget)
-        self.aboutYourMachine.setObjectName("aboutYourMachine")
-        self.verticalLayout_2.addWidget(self.aboutYourMachine)
-        ##  For Installed Browsers
-        self.installedBrowsers = QtWidgets.QCheckBox(self.centralwidget)
-        self.installedBrowsers.setObjectName("installedBrowsers")
-        self.verticalLayout_2.addWidget(self.installedBrowsers)
-        ##  Opened Ports
-        self.openedPorts = QtWidgets.QCheckBox(self.centralwidget)
-        self.openedPorts.setObjectName("openedPorts")
-        self.verticalLayout_2.addWidget(self.openedPorts)
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton.clicked.connect(self.returnData)
-        self.verticalLayout_2.addWidget(self.pushButton)
-        self.gridLayout.addLayout(self.verticalLayout_2, 1, 1, 1, 1)
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 1, 1, 1)
-        self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
-        self.textBrowser.setObjectName("textBrowser")
-        self.gridLayout.addWidget(self.textBrowser, 1, 4, 1, 1)
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        ## For Listing files
+        self.listfIles = QtWidgets.QRadioButton(self.centralwidget)
+        self.listfIles.setObjectName("listfIles")
+        self.listfIles.toggled.connect(lambda: self.returnData(1))
+        self.verticalLayout_2.addWidget(self.listfIles)
+        ##  For Startup Applications
+        self.startUpapplications = QtWidgets.QRadioButton(self.centralwidget)
+        self.startUpapplications.setObjectName("startUpapplications")
+        self.startUpapplications.toggled.connect(lambda: self.returnData(2))
+        self.verticalLayout_2.addWidget(self.startUpapplications)
+        ##  For Installed Applications
+        self.instaLledApplications = QtWidgets.QRadioButton(self.centralwidget)
+        self.instaLledApplications.setObjectName("instaLledApplications")
+        self.instaLledApplications.toggled.connect(lambda: self.returnData(3))
+        self.verticalLayout_2.addWidget(self.instaLledApplications)
+        ##  For Network
+        self.networkInfo = QtWidgets.QRadioButton(self.centralwidget)
+        self.networkInfo.setObjectName("networkInfo")
+        self.networkInfo.toggled.connect(lambda: self.returnData(4))
+        self.verticalLayout_2.addWidget(self.networkInfo)
+        ##  About Your Machine
+        self.aboutYourMachine = QtWidgets.QRadioButton(self.centralwidget)
+        self.aboutYourMachine.setObjectName("aboutYourMachine")
+        self.aboutYourMachine.toggled.connect(lambda: self.returnData(5))
+        self.verticalLayout_2.addWidget(self.aboutYourMachine)
+        ##  For Installed Browsers
+        self.installedBrowsers = QtWidgets.QRadioButton(self.centralwidget)
+        self.installedBrowsers.setObjectName("installedBrowsers")
+        self.installedBrowsers.toggled.connect(lambda: self.returnData(6))
+        self.verticalLayout_2.addWidget(self.installedBrowsers)
+        ##  Opened Ports
+        self.openedPorts = QtWidgets.QRadioButton(self.centralwidget)
+        self.openedPorts.setObjectName("openedPorts")
+        self.openedPorts.toggled.connect(lambda: self.returnData(7))
+        self.verticalLayout_2.addWidget(self.openedPorts)
+        self.gridLayout.addLayout(self.verticalLayout_2, 2, 1, 1, 1)
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setObjectName("label_2")
         self.gridLayout.addWidget(self.label_2, 0, 4, 1, 1)
+        self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
+        self.tableWidget.setProperty("showDropIndicator", True)
+        self.tableWidget.setShowGrid(True)
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.horizontalHeader().setSortIndicatorShown(False)
+        self.tableWidget.verticalHeader().setSortIndicatorShown(False)
+        self.tableWidget.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.tableWidget.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.gridLayout.addWidget(self.tableWidget, 2, 4, 1, 1)
+        self.tables = QtWidgets.QComboBox(self.centralwidget)
+        self.tables.setObjectName("tables")
+        self.gridLayout.addWidget(self.tables, 1, 4, 1, 1)
         Cinfo.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(Cinfo)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 777, 26))
@@ -217,9 +231,7 @@ class Ui_Cinfo(object):
         self.aboutYourMachine.setText(_translate("Cinfo", "About Your Machine"))
         self.installedBrowsers.setText(_translate("Cinfo", "List Installed Browsers"))
         self.openedPorts.setText(_translate("Cinfo", "List Open Ports"))
-        self.pushButton.setText(_translate("Cinfo", "Let\'s Go"))
         self.label.setText(_translate("Cinfo", "Choose Service :"))
-        self.textBrowser.setPlainText("Deepak Chauhan")
         self.label_2.setText(_translate("Cinfo", "Result :"))
         self.menuFile.setTitle(_translate("Cinfo", "File"))
         self.menuExport_As.setTitle(_translate("Cinfo", "Export As"))
@@ -244,8 +256,34 @@ class Ui_Cinfo(object):
         self.actionHelp.setText(_translate("Cinfo", "Help"))
         self.actionHelp.setShortcut(_translate("Cinfo", "Ctrl+F1"))
         self.actionPreferences.setText(_translate("Cinfo", "Preferences"))
+## Refresh Function
+    def refresh(self):
+        print("Refreshed")
 
-    def returnData(self):
+## TO CREATE A TABLE
+    def createTable(self,dataList):
+        self.tableWidget.setRowCount(len(dataList)-1)
+        self.tableWidget.setColumnCount(len(dataList[0]))
+        self.tableWidget.setHorizontalHeaderLabels(dataList[0])
+        dataList.pop(0)
+        for row in range(len(dataList)):
+            for column in range(len(dataList[0])):
+                try:
+                    self.tableWidget.setItem(row, column, QtWidgets.QTableWidgetItem((dataList[row][column])))
+                except Exception as e:
+                    pass
+    
+## WINDOWS BACKEND DRIVER FUNCTION
+    def windowsBackend(self):
+        print("Calling windows")
+
+    def bindFunctions(self,myDict):
+        if self.tables.currentIndex() != 0: 
+            self.createTable(myDict[self.tables.currentText()])
+
+
+## LINUX BACKEND DRIVER FUNCTION
+    def linuxBackend(self, response):
         packages = get_package_list.get_package_list()
         startup = get_startup_list.get_startup_list()
         network = get_network_info.get_network_info()
@@ -256,12 +294,53 @@ class Ui_Cinfo(object):
         hardware = get_hw_info.get_hw_info()
         files = list_files.list_files()
         data = ""
-        if self.aboutYourMachine.isChecked() is True:
-            data += "~~~About Your Machine~~".center(30)+'\n'+os_info.work()+"\n\n"+hardware.work()+"\n\n"+drives.work()+"\n\n"
+        if response is 5:
+            self.tables.clear()
+            self.tables.addItem("Choose the appropriate Information ")
+            self.tables.addItems(os_info.work().keys())
+            self.tables.currentIndexChanged.connect(lambda : self.bindFunctions(os_info.work()))
+            self.tables.setCurrentIndex(0)
+        elif response is 1:
+            self.tables.clear()
+            self.tables.addItem("Choose the appropriate Information ")
+            self.tables.addItems(files.work().keys())
+            self.tables.currentIndexChanged.connect(lambda : self.bindFunctions(files.work()))
+            self.tables.setCurrentIndex(0)
+        elif response is 2:
+            self.tables.clear()
+            self.tables.addItem("Choose the appropriate Information ")
+            self.tables.addItems(startup.work().keys())
+            self.tables.currentIndexChanged.connect(lambda : self.bindFunctions(startup.work()))
+            self.tables.setCurrentIndex(0)
+        elif response is 3:
+            self.tables.clear()
+            self.tables.addItem("Choose the appropriate Information ")
+            self.tables.addItems(packages.work().keys())
+            self.tables.currentIndexChanged.connect(lambda : self.bindFunctions(packages.work()))
+            self.tables.setCurrentIndex(0)
+        elif response is 4:
+            print(4)
+        elif response is 7:
+            self.tables.clear()
+            self.tables.addItem("Choose the appropriate Information ")
+            self.tables.addItems(ports.work().keys())
+            self.tables.currentIndexChanged.connect(lambda : self.bindFunctions(ports.work()))
+            self.tables.setCurrentIndex(0)
+        elif response is 6:
+            self.tables.clear()
+            self.tables.addItem("Choose the appropriate Information ")
+            self.tables.addItems(browsers.work().keys())
+            self.tables.currentIndexChanged.connect(lambda : self.bindFunctions(browsers.work()))
+            self.tables.setCurrentIndex(0)
+        
+## CALLING APPROPRIATE FUNCTION FOR APPRORIATE OS
+    def returnData(self, response):
+        if os.name=='nt':
+            self.windowsBackend()
+        else:
+            self.linuxBackend(response)
 
-        self.textBrowser.setPlainText(data)
-        print([self.listfIles.isChecked(),self.startUpapplications.isChecked(),self.instaLledApplications.isChecked(),self.networkInfo.isChecked(),self.aboutYourMachine.isChecked(),self.installedBrowsers.isChecked(),self.openedPorts.isChecked()])
-
+## MAIN FUNCTION
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

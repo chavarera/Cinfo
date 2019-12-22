@@ -57,6 +57,7 @@ WORK() DOCFILE:
 		9) SAVES THE PROTOCOL IN SECONDARY LIST FOR LATER COMPARISION.
 		10) RETURNS THE FINAL OUTPUT.
 		'''
+		ret_data = {"Open Ports List":[["Protocol","Port Number"]]}
 		data = os.popen("ss -lntu").read().split('\n')													# COLLECTING DATA FROM COMMANDLINE INTO STRING AND THEN SPLITTING INTO THE LIST
 		for i in data:																					# TRAVERSING ON EVERY OUTPUT
 			self.ports_in_line = re.findall(r':\d{1,5}', i)												# EXTRACTING ALL PORTS IN OUTPUT LINE
@@ -70,6 +71,7 @@ WORK() DOCFILE:
 		self.final_data = "Protocol,Port\n"
 		for i in self.final_list:
 			self.final_data += i[0]+","+i[1]+"\n"
+			ret_data["Open Ports List"].append([i[0],i[1]])
 
 		if self.current_path.find("output") == -1:														# CHECKING IF CURRENT WORKING DIRECTORY IS OUTPUT FOLDER
 			self.current_path += "/output/"
@@ -77,4 +79,4 @@ WORK() DOCFILE:
 		with open("Open Ports.csv", "w") as ports:														# SAVING DATA INTO A FILE
 			ports.write(self.final_data)
 
-		return "Open Ports.csv"																			# RETURNING THE NAME OF FILE
+		return ret_data
