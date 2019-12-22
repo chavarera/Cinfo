@@ -12,7 +12,6 @@
 ## Table of Contents
 - [About](#About)
 - [Prerequisite](#Prerequisite)
-
 - [Install](#install)
 - [Contributors](#Contributors)
 - [Help](#Help)
@@ -61,8 +60,6 @@ In linux / mac OS:
 ```
 python3 Cinfo.py
 ```
-
-![run](https://github.com/chavarera/Cinfo/blob/master/img/run.PNG)
 
 OutPut
 ```
