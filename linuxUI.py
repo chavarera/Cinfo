@@ -1,48 +1,19 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Cinfo.ui'
+# Form implementation generated from reading ui file 'MainUi.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from lib.windows import SystemInfo,NetworkInfo,SoftwareInfo,StorageInfo
-from lib.windows import HardwareInfo,FileInfo,DeviceInfo,MiscInfo,ServiceInfo
-from lib.windows.common import Utility as utl
-import json
-import os
-import pickle
+from lib.linux import get_browsers,get_drives,get_hw_info,get_network_info,get_os_info,get_package_list,get_ports,get_startup_list,list_files
 
-    
 class Ui_Cinfo(object):
-    def __init__(self):
-        self.module_list = ['system','hardware','network','software','device','storage','service']
-        self.submodules = []
-        self.modules=""
-        self.current_selected = []
-        self.os = os.name
-        self.cheklist = []
-        self.checked_modules = []
-        self.fetchedData = self.OpenPickle()
-        self.filterdata = []
-        
-    def closeEvent(self, event):
-        msg = QtWidgets.QMessageBox()
-        msg.setIcon(QtWidgets.QMessageBox.Question)
-        msg.setInformativeText("Are you sure you want to close this window?")
-        msg.setStandardButtons(QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.Cancel)
-        msg.setWindowTitle("Are you sure?")
-        replay=msg.exec_()
-        if(replay==QtWidgets.QMessageBox.Yes):
-            exit(0)
-        else:
-            pass
-        
     def setupUi(self, Cinfo):
         Cinfo.setObjectName("Cinfo")
-        Cinfo.resize(640, 461)
+        Cinfo.resize(777, 461)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("icons/info.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Cinfo.setWindowIcon(icon)
@@ -51,43 +22,53 @@ class Ui_Cinfo(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
-        self.Modules_verticalLayout = QtWidgets.QVBoxLayout()
-        self.Modules_verticalLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
-        self.Modules_verticalLayout.setContentsMargins(20, 20, 20, 20)
-        self.Modules_verticalLayout.setSpacing(1)
-        self.Modules_verticalLayout.setObjectName("Modules_verticalLayout")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        ## For Listing files
+        self.listfIles = QtWidgets.QCheckBox(self.centralwidget)
+        self.listfIles.setObjectName("listfIles")
+        self.verticalLayout_2.addWidget(self.listfIles)
+        ##  For Startup Applications
+        self.startUpapplications = QtWidgets.QCheckBox(self.centralwidget)
+        self.startUpapplications.setObjectName("startUpapplications")
+        self.verticalLayout_2.addWidget(self.startUpapplications)
+        ##  For Installed Applications
+        self.instaLledApplications = QtWidgets.QCheckBox(self.centralwidget)
+        self.instaLledApplications.setObjectName("instaLledApplications")
+        self.verticalLayout_2.addWidget(self.instaLledApplications)
+        ##  For Network
+        self.networkInfo = QtWidgets.QCheckBox(self.centralwidget)
+        self.networkInfo.setObjectName("networkInfo")
+        self.verticalLayout_2.addWidget(self.networkInfo)
+        ##  About Your Machine
+        self.aboutYourMachine = QtWidgets.QCheckBox(self.centralwidget)
+        self.aboutYourMachine.setObjectName("aboutYourMachine")
+        self.verticalLayout_2.addWidget(self.aboutYourMachine)
+        ##  For Installed Browsers
+        self.installedBrowsers = QtWidgets.QCheckBox(self.centralwidget)
+        self.installedBrowsers.setObjectName("installedBrowsers")
+        self.verticalLayout_2.addWidget(self.installedBrowsers)
+        ##  Opened Ports
+        self.openedPorts = QtWidgets.QCheckBox(self.centralwidget)
+        self.openedPorts.setObjectName("openedPorts")
+        self.verticalLayout_2.addWidget(self.openedPorts)
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.returnData)
+        self.verticalLayout_2.addWidget(self.pushButton)
+        self.gridLayout.addLayout(self.verticalLayout_2, 1, 1, 1, 1)
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label.setAutoFillBackground(False)
-        self.label.setLineWidth(1)
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.label.setFont(font)
-        self.label.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.label.setObjectName("label")
-        self.Modules_verticalLayout.addWidget(self.label)
-        self.gridLayout.addLayout(self.Modules_verticalLayout, 0, 0, 1, 1)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.result_tableWidget = QtWidgets.QTableWidget(self.centralwidget)
-        self.result_tableWidget.setObjectName("result_tableWidget")
-        self.result_tableWidget.setColumnCount(0)
-        self.result_tableWidget.setRowCount(0)
-        
-
-        self.horizontalLayout.addWidget(self.result_tableWidget)
-        self.gridLayout.addLayout(self.horizontalLayout, 0, 2, 1, 1)
+        self.gridLayout.addWidget(self.label, 0, 1, 1, 1)
+        self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser.setObjectName("textBrowser")
+        self.gridLayout.addWidget(self.textBrowser, 1, 4, 1, 1)
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.label_2.setFont(font)
-        self.label_2.setTextFormat(QtCore.Qt.PlainText)
-        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
-        self.gridLayout.addWidget(self.label_2, 1, 1, 1, 2)
+        self.gridLayout.addWidget(self.label_2, 0, 4, 1, 1)
         Cinfo.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(Cinfo)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 640, 27))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 777, 26))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.menubar.setFont(font)
@@ -222,124 +203,24 @@ class Ui_Cinfo(object):
         self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionExit)
         self.toolBar.addSeparator()
-        self.comboBoxNew = QtWidgets.QComboBox()
-        self.Modules_verticalLayout.addWidget(self.comboBoxNew)
-        self.comboBoxNew.currentTextChanged.connect(self.on_SubModule_change)
+
         self.retranslateUi(Cinfo)
         QtCore.QMetaObject.connectSlotsByName(Cinfo)
-        
-        self.actionJson.triggered.connect(self.ExportToJson)
-        self.actionExit.triggered.connect(self.closeEvent)
-        self.AddModules()
-        
-    def ShowAlertMsg(self,message,types):
-        if types=="success":
-            alert_icon=QtWidgets.QMessageBox.Information
-            alert_type="Success"
-        if types=="error":
-            alert_icon=QtWidgets.QMessageBox.Critical
-            alert_type="Error"
-            
-        message=message   
-        msg = QtWidgets.QMessageBox()
-        msg.setIcon(alert_icon)
-        msg.setInformativeText(str(message))
-        msg.setWindowTitle(alert_type)
-        msg.exec_()
-
-    def OpenPickle(self,filepath='result.pickle'):
-      try:
-           with open(filepath,"rb") as file:
-              return pickle.load(file)
-      except:
-          print("First Run Follwing command on Command Prompt \npython Cinfo.py")
-          exit(0)
-        
-    def FilterRecord(self,filters):
-        if len(filters)>0:
-           self.filterdata=[self.fetchedData[module] for module in filters]
-           
-    def ExportToJson(self):
-        status,res=utl.ExportTOJson(self.fetchedData)
-        if status:
-            self.ShowAlertMsg(res,"success")
-        else:
-            self.ShowAlertMsg(res,"error")
-        
-    def SubFilter(self,module,subFilter):
-        if len(subFilter)>0:
-            self.current_selected=self.fetchedData[module][subFilter]
-            
-    def ModuleInfo(self):
-        checkeds=[val.isChecked() for val in self.cheklist]
-        self.checked_modules=[val for status,val in zip(checkeds,self.module_list) if status]
-        self.modules=self.checked_modules[0]
-        self.FilterRecord(self.checked_modules)
-        self.SetData(self.checked_modules)
-        
-    def on_SubModule_change(self):
-       
-        current_submodule=self.comboBoxNew.currentText()
-        self.SubFilter(self.modules,current_submodule)
-        self.result_tableWidget.setColumnCount(2)
-        keys=['Parameter','Value']
-        
-        all_values=self.current_selected[0].keys()
-        rows_count=0
-        self.result_tableWidget.setRowCount(0)
-        if len(self.current_selected)==1:
-            self.result_tableWidget.insertRow(0)
-            self.result_tableWidget.setHorizontalHeaderLabels(keys)
-            for result in self.current_selected:
-                vals=result.values()
-                for idx,value in enumerate(result.keys()):
-                    if result[value]!="":
-                        self.result_tableWidget.insertRow(rows_count)
-                        self.result_tableWidget.setItem(rows_count, 0, QtWidgets.QTableWidgetItem(str(value)))
-                        self.result_tableWidget.setItem(rows_count, 1, QtWidgets.QTableWidgetItem(str(result[value])))
-                        rows_count+=1
-        else:
-            keys=self.current_selected[0].keys()
-            self.result_tableWidget.setColumnCount(len(keys))
-            self.result_tableWidget.setHorizontalHeaderLabels(keys)
-            for result in self.current_selected:
-            
-                self.result_tableWidget.insertRow(rows_count)
-                vals=result.values()
-                for idx,value in enumerate(vals):
-                    self.result_tableWidget.setItem(rows_count, idx, QtWidgets.QTableWidgetItem(str(value)))
-                rows_count+=1
-
-        self.result_tableWidget.resizeColumnsToContents()     
-
-        
-    def SetData(self,modules):
-        for i in range(self.comboBoxNew.count()):
-            self.comboBoxNew.removeItem(i)
-        self.result_tableWidget.setRowCount(0)
-        self.submodules=[key for key,value in self.filterdata[0].items()]
-        self.comboBoxNew.addItems(self.submodules)
-       
-        
-              
-    def AddModules(self):
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        test=[]
-        for modules in self.module_list:
-            self.radioButton = QtWidgets.QRadioButton(Cinfo)
-            self.radioButton.setObjectName(modules)
-            self.radioButton.setText(modules)
-            self.radioButton.setFont(font)
-            self.radioButton.toggled.connect(self.ModuleInfo)
-            self.Modules_verticalLayout.addWidget(self.radioButton)
-            self.cheklist.append(self.radioButton)
 
     def retranslateUi(self, Cinfo):
         _translate = QtCore.QCoreApplication.translate
         Cinfo.setWindowTitle(_translate("Cinfo", "Cinfo"))
-        self.label.setText(_translate("Cinfo", "Select Module"))
-        self.label_2.setText(_translate("Cinfo", "Cinfo ( Computer Information )"))
+        self.listfIles.setText(_translate("Cinfo", "List Files"))
+        self.startUpapplications.setText(_translate("Cinfo", "List Startup Applications"))
+        self.instaLledApplications.setText(_translate("Cinfo", "List Installed Applications"))
+        self.networkInfo.setText(_translate("Cinfo", "Network Information"))
+        self.aboutYourMachine.setText(_translate("Cinfo", "About Your Machine"))
+        self.installedBrowsers.setText(_translate("Cinfo", "List Installed Browsers"))
+        self.openedPorts.setText(_translate("Cinfo", "List Open Ports"))
+        self.pushButton.setText(_translate("Cinfo", "Let\'s Go"))
+        self.label.setText(_translate("Cinfo", "Choose Service :"))
+        self.textBrowser.setPlainText("Deepak Chauhan")
+        self.label_2.setText(_translate("Cinfo", "Result :"))
         self.menuFile.setTitle(_translate("Cinfo", "File"))
         self.menuExport_As.setTitle(_translate("Cinfo", "Export As"))
         self.menuOption.setTitle(_translate("Cinfo", "Option"))
@@ -355,7 +236,6 @@ class Ui_Cinfo(object):
         self.actionRefresh.setToolTip(_translate("Cinfo", "refresh"))
         self.actionRefresh.setShortcut(_translate("Cinfo", "Ctrl+F5"))
         self.actionExit.setText(_translate("Cinfo", "Exit"))
-
         self.actionExit.setToolTip(_translate("Cinfo", "Exit Window"))
         self.actionExit.setShortcut(_translate("Cinfo", "Ctrl+Q"))
         self.actionAbout.setText(_translate("Cinfo", "About"))
@@ -365,6 +245,22 @@ class Ui_Cinfo(object):
         self.actionHelp.setShortcut(_translate("Cinfo", "Ctrl+F1"))
         self.actionPreferences.setText(_translate("Cinfo", "Preferences"))
 
+    def returnData(self):
+        packages = get_package_list.get_package_list()
+        startup = get_startup_list.get_startup_list()
+        network = get_network_info.get_network_info()
+        browsers = get_browsers.get_browsers()
+        ports = get_ports.get_ports()
+        drives = get_drives.get_drives()
+        os_info = get_os_info.get_os_info()
+        hardware = get_hw_info.get_hw_info()
+        files = list_files.list_files()
+        data = ""
+        if self.aboutYourMachine.isChecked() is True:
+            data += "~~~About Your Machine~~".center(30)+'\n'+os_info.work()+"\n\n"+hardware.work()+"\n\n"+drives.work()+"\n\n"
+
+        self.textBrowser.setPlainText(data)
+        print([self.listfIles.isChecked(),self.startUpapplications.isChecked(),self.instaLledApplications.isChecked(),self.networkInfo.isChecked(),self.aboutYourMachine.isChecked(),self.installedBrowsers.isChecked(),self.openedPorts.isChecked()])
 
 if __name__ == "__main__":
     import sys
