@@ -1,1 +1,122 @@
-Your all files here
+File Name, File Address
+Cinfo.py,/home/royal/Documents/KWOC/Cinfo/Cinfo.py
+linuxUI.py,/home/royal/Documents/KWOC/Cinfo/linuxUI.py
+MainUi.py,/home/royal/Documents/KWOC/Cinfo/MainUi.py
+LinuxInfo.py,/home/royal/Documents/KWOC/Cinfo/LinuxInfo.py
+WindowsInfo.py,/home/royal/Documents/KWOC/Cinfo/WindowsInfo.py
+LICENSE,/home/royal/Documents/KWOC/Cinfo/LICENSE
+README.md,/home/royal/Documents/KWOC/Cinfo/README.md
+requirements.txt,/home/royal/Documents/KWOC/Cinfo/requirements.txt
+CODE_OF_CONDUCT.md,/home/royal/Documents/KWOC/Cinfo/CODE_OF_CONDUCT.md
+feature_request.md,/home/royal/Documents/KWOC/Cinfo/.github/ISSUE_TEMPLATE/feature_request.md
+bug_report.md,/home/royal/Documents/KWOC/Cinfo/.github/ISSUE_TEMPLATE/bug_report.md
+custom.md,/home/royal/Documents/KWOC/Cinfo/.github/ISSUE_TEMPLATE/custom.md
+MainUi.ui,/home/royal/Documents/KWOC/Cinfo/ui/MainUi.ui
+__ init __.py,/home/royal/Documents/KWOC/Cinfo/lib/__ init __.py
+NetworkInfo.py,/home/royal/Documents/KWOC/Cinfo/lib/windows/NetworkInfo.py
+__ init __.py,/home/royal/Documents/KWOC/Cinfo/lib/windows/__ init __.py
+SystemInfo.py,/home/royal/Documents/KWOC/Cinfo/lib/windows/SystemInfo.py
+HardwareInfo.py,/home/royal/Documents/KWOC/Cinfo/lib/windows/HardwareInfo.py
+ServiceInfo.py,/home/royal/Documents/KWOC/Cinfo/lib/windows/ServiceInfo.py
+DeviceInfo.py,/home/royal/Documents/KWOC/Cinfo/lib/windows/DeviceInfo.py
+FileInfo.py,/home/royal/Documents/KWOC/Cinfo/lib/windows/FileInfo.py
+MiscInfo.py,/home/royal/Documents/KWOC/Cinfo/lib/windows/MiscInfo.py
+SoftwareInfo.py,/home/royal/Documents/KWOC/Cinfo/lib/windows/SoftwareInfo.py
+StorageInfo.py,/home/royal/Documents/KWOC/Cinfo/lib/windows/StorageInfo.py
+Utility.py,/home/royal/Documents/KWOC/Cinfo/lib/windows/common/Utility.py
+RegistryHandler.py,/home/royal/Documents/KWOC/Cinfo/lib/windows/common/RegistryHandler.py
+CommandHandler.py,/home/royal/Documents/KWOC/Cinfo/lib/windows/common/CommandHandler.py
+get_package_list.py,/home/royal/Documents/KWOC/Cinfo/lib/linux/get_package_list.py
+get_drives.py,/home/royal/Documents/KWOC/Cinfo/lib/linux/get_drives.py
+get_browsers.py,/home/royal/Documents/KWOC/Cinfo/lib/linux/get_browsers.py
+get_os_info.py,/home/royal/Documents/KWOC/Cinfo/lib/linux/get_os_info.py
+get_network_info.py,/home/royal/Documents/KWOC/Cinfo/lib/linux/get_network_info.py
+get_startup_list.py,/home/royal/Documents/KWOC/Cinfo/lib/linux/get_startup_list.py
+get_hw_info.py,/home/royal/Documents/KWOC/Cinfo/lib/linux/get_hw_info.py
+list_files.py,/home/royal/Documents/KWOC/Cinfo/lib/linux/list_files.py
+get_ports.py,/home/royal/Documents/KWOC/Cinfo/lib/linux/get_ports.py
+get_network_info.cpython-37.pyc,/home/royal/Documents/KWOC/Cinfo/lib/linux/__pycache__/get_network_info.cpython-37.pyc
+get_os_info.cpython-37.pyc,/home/royal/Documents/KWOC/Cinfo/lib/linux/__pycache__/get_os_info.cpython-37.pyc
+get_package_list.cpython-37.pyc,/home/royal/Documents/KWOC/Cinfo/lib/linux/__pycache__/get_package_list.cpython-37.pyc
+get_startup_list.cpython-37.pyc,/home/royal/Documents/KWOC/Cinfo/lib/linux/__pycache__/get_startup_list.cpython-37.pyc
+get_ports.cpython-37.pyc,/home/royal/Documents/KWOC/Cinfo/lib/linux/__pycache__/get_ports.cpython-37.pyc
+get_hw_info.cpython-37.pyc,/home/royal/Documents/KWOC/Cinfo/lib/linux/__pycache__/get_hw_info.cpython-37.pyc
+list_files.cpython-37.pyc,/home/royal/Documents/KWOC/Cinfo/lib/linux/__pycache__/list_files.cpython-37.pyc
+get_drives.cpython-37.pyc,/home/royal/Documents/KWOC/Cinfo/lib/linux/__pycache__/get_drives.cpython-37.pyc
+get_browsers.cpython-37.pyc,/home/royal/Documents/KWOC/Cinfo/lib/linux/__pycache__/get_browsers.cpython-37.pyc
+startup applications.csv,/home/royal/Documents/KWOC/Cinfo/output/startup applications.csv
+Installed Browser.csv,/home/royal/Documents/KWOC/Cinfo/output/Installed Browser.csv
+Open Ports.csv,/home/royal/Documents/KWOC/Cinfo/output/Open Ports.csv
+File Overview.json,/home/royal/Documents/KWOC/Cinfo/output/File Overview.json
+File list.csv,/home/royal/Documents/KWOC/Cinfo/output/File list.csv
+network_info.txt,/home/royal/Documents/KWOC/Cinfo/output/network_info.txt
+About Your Machine.txt,/home/royal/Documents/KWOC/Cinfo/output/About Your Machine.txt
+linux_packages_installed.csv,/home/royal/Documents/KWOC/Cinfo/output/linux_packages_installed.csv
+about.png,/home/royal/Documents/KWOC/Cinfo/icons/about.png
+logo.png,/home/royal/Documents/KWOC/Cinfo/icons/logo.png
+Export.png,/home/royal/Documents/KWOC/Cinfo/icons/Export.png
+exit.png,/home/royal/Documents/KWOC/Cinfo/icons/exit.png
+html.png,/home/royal/Documents/KWOC/Cinfo/icons/html.png
+info.png,/home/royal/Documents/KWOC/Cinfo/icons/info.png
+Refresh.png,/home/royal/Documents/KWOC/Cinfo/icons/Refresh.png
+excel.png,/home/royal/Documents/KWOC/Cinfo/icons/excel.png
+Json.png,/home/royal/Documents/KWOC/Cinfo/icons/Json.png
+license.txt,/home/royal/Documents/KWOC/Cinfo/icons/license.txt
+text.png,/home/royal/Documents/KWOC/Cinfo/icons/text.png
+help.png,/home/royal/Documents/KWOC/Cinfo/icons/help.png
+Prefrences.png,/home/royal/Documents/KWOC/Cinfo/icons/Prefrences.png
+COMMIT_EDITMSG,/home/royal/Documents/KWOC/Cinfo/.git/COMMIT_EDITMSG
+config,/home/royal/Documents/KWOC/Cinfo/.git/config
+description,/home/royal/Documents/KWOC/Cinfo/.git/description
+index,/home/royal/Documents/KWOC/Cinfo/.git/index
+HEAD,/home/royal/Documents/KWOC/Cinfo/.git/HEAD
+packed-refs,/home/royal/Documents/KWOC/Cinfo/.git/packed-refs
+master,/home/royal/Documents/KWOC/Cinfo/.git/refs/heads/master
+HEAD,/home/royal/Documents/KWOC/Cinfo/.git/refs/remotes/origin/HEAD
+master,/home/royal/Documents/KWOC/Cinfo/.git/refs/remotes/origin/master
+HEAD,/home/royal/Documents/KWOC/Cinfo/.git/logs/HEAD
+master,/home/royal/Documents/KWOC/Cinfo/.git/logs/refs/heads/master
+HEAD,/home/royal/Documents/KWOC/Cinfo/.git/logs/refs/remotes/origin/HEAD
+master,/home/royal/Documents/KWOC/Cinfo/.git/logs/refs/remotes/origin/master
+exclude,/home/royal/Documents/KWOC/Cinfo/.git/info/exclude
+edf5d7463ce3cdd0137c6fb98ddeb7136867f3,/home/royal/Documents/KWOC/Cinfo/.git/objects/7c/edf5d7463ce3cdd0137c6fb98ddeb7136867f3
+331156f6794aa9e40c60eeab79df494ac28f47,/home/royal/Documents/KWOC/Cinfo/.git/objects/6d/331156f6794aa9e40c60eeab79df494ac28f47
+4e6d935663c20c23aee63a6554b2d8a9788c58,/home/royal/Documents/KWOC/Cinfo/.git/objects/09/4e6d935663c20c23aee63a6554b2d8a9788c58
+fa80a29381a2182d805c47b59cb6510d1118b5,/home/royal/Documents/KWOC/Cinfo/.git/objects/d2/fa80a29381a2182d805c47b59cb6510d1118b5
+c7ec44e4490d0310fd9a2b9f9d44fe35b95258,/home/royal/Documents/KWOC/Cinfo/.git/objects/d2/c7ec44e4490d0310fd9a2b9f9d44fe35b95258
+ac958a2808033f579da578f4a8a7e8cdd533a5,/home/royal/Documents/KWOC/Cinfo/.git/objects/28/ac958a2808033f579da578f4a8a7e8cdd533a5
+fec444e64a5556ed3994a8d7f85801f9ae0529,/home/royal/Documents/KWOC/Cinfo/.git/objects/a5/fec444e64a5556ed3994a8d7f85801f9ae0529
+660dc13ec170f1808d76a31490c1f24fc8a307,/home/royal/Documents/KWOC/Cinfo/.git/objects/1b/660dc13ec170f1808d76a31490c1f24fc8a307
+5c7e6c4903b993eca089497a78a92a4ade0875,/home/royal/Documents/KWOC/Cinfo/.git/objects/f9/5c7e6c4903b993eca089497a78a92a4ade0875
+0d1458bd8fd1e157044688925aefa66abe243c,/home/royal/Documents/KWOC/Cinfo/.git/objects/8a/0d1458bd8fd1e157044688925aefa66abe243c
+43d3b01521055ffa5e113f95c139d0902f5e83,/home/royal/Documents/KWOC/Cinfo/.git/objects/69/43d3b01521055ffa5e113f95c139d0902f5e83
+4dbabb56c73fd2488be49a25339dda930ac18f,/home/royal/Documents/KWOC/Cinfo/.git/objects/ec/4dbabb56c73fd2488be49a25339dda930ac18f
+58b6f970cb12ea2cec9746736af73fabb8957f,/home/royal/Documents/KWOC/Cinfo/.git/objects/c5/58b6f970cb12ea2cec9746736af73fabb8957f
+9321fce5cb5c73b6ed32503784adf36cd55dc7,/home/royal/Documents/KWOC/Cinfo/.git/objects/db/9321fce5cb5c73b6ed32503784adf36cd55dc7
+dcfa3a2a385d5109dcd9b38602e1ba6cb42db4,/home/royal/Documents/KWOC/Cinfo/.git/objects/bc/dcfa3a2a385d5109dcd9b38602e1ba6cb42db4
+9429fdfea1df34120838d1e298e37d717cfc8e,/home/royal/Documents/KWOC/Cinfo/.git/objects/08/9429fdfea1df34120838d1e298e37d717cfc8e
+8f13699456b5846be693791c5bb259a4a64c2d,/home/royal/Documents/KWOC/Cinfo/.git/objects/0b/8f13699456b5846be693791c5bb259a4a64c2d
+pack-d517813b6ed8ce1ad384b5a2e0f62d1b77a16bbd.pack,/home/royal/Documents/KWOC/Cinfo/.git/objects/pack/pack-d517813b6ed8ce1ad384b5a2e0f62d1b77a16bbd.pack
+pack-d517813b6ed8ce1ad384b5a2e0f62d1b77a16bbd.idx,/home/royal/Documents/KWOC/Cinfo/.git/objects/pack/pack-d517813b6ed8ce1ad384b5a2e0f62d1b77a16bbd.idx
+a6468a8d515ffc8e16d5980ca2d44e3f016781,/home/royal/Documents/KWOC/Cinfo/.git/objects/6c/a6468a8d515ffc8e16d5980ca2d44e3f016781
+283c7cf18ac17ad6f18d47f5f8f137cb1ab573,/home/royal/Documents/KWOC/Cinfo/.git/objects/0d/283c7cf18ac17ad6f18d47f5f8f137cb1ab573
+245e836626d2f704e7b62c1200572441d0ae7d,/home/royal/Documents/KWOC/Cinfo/.git/objects/c7/245e836626d2f704e7b62c1200572441d0ae7d
+78b036b52f7bfe75e6b39d9ee2e3ece1893075,/home/royal/Documents/KWOC/Cinfo/.git/objects/ba/78b036b52f7bfe75e6b39d9ee2e3ece1893075
+ffa91d6cdcab5b73c8afb2b946f672e96ede38,/home/royal/Documents/KWOC/Cinfo/.git/objects/e4/ffa91d6cdcab5b73c8afb2b946f672e96ede38
+post-update.sample,/home/royal/Documents/KWOC/Cinfo/.git/hooks/post-update.sample
+pre-merge-commit.sample,/home/royal/Documents/KWOC/Cinfo/.git/hooks/pre-merge-commit.sample
+pre-receive.sample,/home/royal/Documents/KWOC/Cinfo/.git/hooks/pre-receive.sample
+update.sample,/home/royal/Documents/KWOC/Cinfo/.git/hooks/update.sample
+pre-commit.sample,/home/royal/Documents/KWOC/Cinfo/.git/hooks/pre-commit.sample
+pre-applypatch.sample,/home/royal/Documents/KWOC/Cinfo/.git/hooks/pre-applypatch.sample
+prepare-commit-msg.sample,/home/royal/Documents/KWOC/Cinfo/.git/hooks/prepare-commit-msg.sample
+commit-msg.sample,/home/royal/Documents/KWOC/Cinfo/.git/hooks/commit-msg.sample
+pre-push.sample,/home/royal/Documents/KWOC/Cinfo/.git/hooks/pre-push.sample
+pre-rebase.sample,/home/royal/Documents/KWOC/Cinfo/.git/hooks/pre-rebase.sample
+fsmonitor-watchman.sample,/home/royal/Documents/KWOC/Cinfo/.git/hooks/fsmonitor-watchman.sample
+applypatch-msg.sample,/home/royal/Documents/KWOC/Cinfo/.git/hooks/applypatch-msg.sample
+logo.png,/home/royal/Documents/KWOC/Cinfo/img/logo.png
+output.png,/home/royal/Documents/KWOC/Cinfo/img/output.png
+installation.png,/home/royal/Documents/KWOC/Cinfo/img/installation.png
+Output files (Linux).png,/home/royal/Documents/KWOC/Cinfo/img/Output files (Linux).png
+terminal.png,/home/royal/Documents/KWOC/Cinfo/img/terminal.png

@@ -85,7 +85,7 @@ class get_os_info:
 		self.details += tabulate(temp_container, headers = ["Property", "Value"],tablefmt="fancy_grid")
 		temp = temp_container.copy()
 		temp.insert(0,["Property", "Value"])
-		#print(temp)
+		temp.pop()
 		data["CPU Information"].extend(temp)
 
 		# FETCHING USERNAMES FROM OS
@@ -112,7 +112,8 @@ class get_os_info:
 		temp.insert(0,["Usernames"])
 		#print(temp)
 		data["Users In Machine"].extend(temp)
-
+		for i in data["CPU Information"]:
+			i[1] = i[1].strip()
 		# RETURNING ALL FINALISED DETAILS
 		# print(self.details)
 		return data
