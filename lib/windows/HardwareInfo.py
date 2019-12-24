@@ -73,7 +73,7 @@ class HardwareInfo:
         Return bios,cpu,usb information
         '''
         hardwarinfo={
-                     'usb':self.usbPortInfo()
+                     'usb':[self.usbPortInfo()]
             }
         Hardware_parameter=['onboarddevice','bios','cpu','BASEBOARD','CSPRODUCT','PORTCONNECTOR','SYSTEMSLOT']
         for part in Hardware_parameter:

@@ -80,10 +80,11 @@ class NetworkInfo:
                 objectName.networkinfo()
         '''
         network_info={}
-        network_info['ip']=self.getIpConfig()
-        network_info['HostNodeName']=self.getNetworkName()
-        network_info['IpAddress']=self.getIpAddress()
-        network_info['MacAddress']=self.getMacAddress()
+        ipandmacAddress={}
+        ipandmacAddress['HostNodeName']=self.getNetworkName()
+        ipandmacAddress['IpAddress']=self.getIpAddress()
+        ipandmacAddress['MacAddress']=self.getMacAddress()
+        network_info['ipandmacAddress']=[ipandmacAddress]
         network_categories=['netclient','NETPROTOCOL','nic','RDNIC','NICCONFIG']
         for part in network_categories:
             network_info[part]=self.Preprocess(part)
