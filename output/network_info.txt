@@ -5,7 +5,7 @@ DEVICE:                         wlan0
 
 TYPE:                           wifi
 
-HWADDR:                         94:E9:79:C7:29:ED
+HWADDR:                         Your Mac here
 
 MTU:                            1500
 
@@ -19,8 +19,8 @@ IP4.ADDRESS[1]:                         192.168.0.104/24
 IP4.GATEWAY:                            192.168.0.1
 IP4.ROUTE[1]:                           dst  0.0.0.0/0, nh  192.168.0.1, mt  600
 IP4.ROUTE[2]:                           dst  192.168.0.0/24, nh  0.0.0.0, mt  600
-IP4.DNS[1]:                             103.59.199.14
-IP4.DNS[2]:                             103.59.199.10
+IP4.DNS[1]:                             IP
+IP4.DNS[2]:                             IP
 
 IP6.ADDRESS[1]:                         fe80::c3dd:4cb1:a248:6d77/64
 IP6.GATEWAY:                            
@@ -53,7 +53,7 @@ DEVICE:                         eth0
 
 TYPE:                           ethernet
 
-HWADDR:                         FC:45:96:2D:93:28
+HWADDR:                        Your mac here
 
 MTU:                            1500
 
