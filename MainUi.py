@@ -225,6 +225,7 @@ class Ui_Cinfo(object):
         self.comboBoxNew = QtWidgets.QComboBox()
         self.Modules_verticalLayout.addWidget(self.comboBoxNew)
         self.comboBoxNew.currentTextChanged.connect(self.on_SubModule_change)
+        
         self.retranslateUi(Cinfo)
         QtCore.QMetaObject.connectSlotsByName(Cinfo)
         
@@ -267,23 +268,30 @@ class Ui_Cinfo(object):
             self.ShowAlertMsg(res,"error")
         
     def SubFilter(self,module,subFilter):
-        if len(subFilter)>0:
+        try:
             self.current_selected=self.fetchedData[module][subFilter]
+        except Exception as Ex:
+            pass
+    
+            
             
     def ModuleInfo(self):
+        for i in range(self.comboBoxNew.count()+1):
+            self.comboBoxNew.removeItem(i)
         checkeds=[val.isChecked() for val in self.cheklist]
+        
         self.checked_modules=[val for status,val in zip(checkeds,self.module_list) if status]
         self.modules=self.checked_modules[0]
         self.FilterRecord(self.checked_modules)
         self.SetData(self.checked_modules)
         
     def on_SubModule_change(self):
-       
+
         current_submodule=self.comboBoxNew.currentText()
-        self.SubFilter(self.modules,current_submodule)
         self.result_tableWidget.setColumnCount(2)
         keys=['Parameter','Value']
         
+        self.SubFilter(self.modules,current_submodule)
         all_values=self.current_selected[0].keys()
         rows_count=0
         self.result_tableWidget.setRowCount(0)
@@ -314,8 +322,7 @@ class Ui_Cinfo(object):
 
         
     def SetData(self,modules):
-        for i in range(self.comboBoxNew.count()):
-            self.comboBoxNew.removeItem(i)
+        self.comboBoxNew.clear()
         self.result_tableWidget.setRowCount(0)
         self.submodules=[key for key,value in self.filterdata[0].items()]
         self.comboBoxNew.addItems(self.submodules)
@@ -355,7 +362,6 @@ class Ui_Cinfo(object):
         self.actionRefresh.setToolTip(_translate("Cinfo", "refresh"))
         self.actionRefresh.setShortcut(_translate("Cinfo", "Ctrl+F5"))
         self.actionExit.setText(_translate("Cinfo", "Exit"))
-
         self.actionExit.setToolTip(_translate("Cinfo", "Exit Window"))
         self.actionExit.setShortcut(_translate("Cinfo", "Ctrl+Q"))
         self.actionAbout.setText(_translate("Cinfo", "About"))
