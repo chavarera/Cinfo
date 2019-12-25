@@ -1,0 +1,1 @@
+{"wlan0": {"DEVICE": "wlan0", "TYPE": "wifi", "HWADDR": "94", "MTU": "1500", "STATE": "100 (connected)", "CONNECTION": "Royal Eagle", "CONPATH": "/org/freedesktop/NetworkManager/ActiveConnection/1", "IP4.ADDRESS[1]": "192.168.0.104/24", "IP4.GATEWAY": "192.168.0.1", "IP4.DNS[1]": "103.59.199.14", "IP4.DNS[2]": "103.59.199.10", "IP6.ADDRESS[1]": "fe80"}}
