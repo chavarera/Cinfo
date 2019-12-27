@@ -9,9 +9,12 @@
 import os
 import pandas as pd
 from PyQt5 import QtCore, QtGui, QtWidgets
-from lib.linux import get_browsers,get_drives,get_hw_info,get_network_info,get_os_info,get_package_list,get_ports,get_startup_list,list_files
+from lib.linux import get_browsers,get_drives,get_hw_info,get_network_info,get_os_info,get_package_list,get_ports,get_startup_list,list_files, saveFile
 
 class Ui_Cinfo(object):
+	def __init__(self):
+		self.selectedDict = dict()
+
 	def setupUi(self, Cinfo):
 		Cinfo.setObjectName("Cinfo")
 		Cinfo.resize(777, 461)
@@ -135,6 +138,7 @@ class Ui_Cinfo(object):
 		font.setPointSize(12)
 		self.actionExcel.setFont(font)
 		self.actionExcel.setObjectName("actionExcel")
+		self.actionExcel.triggered.connect(lambda :self.saveData(2))
 		self.actionJson = QtWidgets.QAction(Cinfo)
 		icon2 = QtGui.QIcon()
 		icon2.addPixmap(QtGui.QPixmap("icons/Json.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -144,6 +148,7 @@ class Ui_Cinfo(object):
 		font.setPointSize(12)
 		self.actionJson.setFont(font)
 		self.actionJson.setObjectName("actionJson")
+		self.actionJson.triggered.connect(lambda :self.saveData(3))
 		self.actionText = QtWidgets.QAction(Cinfo)
 		icon3 = QtGui.QIcon()
 		icon3.addPixmap(QtGui.QPixmap("icons/text.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -153,6 +158,7 @@ class Ui_Cinfo(object):
 		font.setPointSize(12)
 		self.actionText.setFont(font)
 		self.actionText.setObjectName("actionText")
+		self.actionText.triggered.connect(lambda :self.saveData(1))
 		self.actionRefresh = QtWidgets.QAction(Cinfo)
 		icon4 = QtGui.QIcon()
 		icon4.addPixmap(QtGui.QPixmap("icons/Refresh.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -320,6 +326,17 @@ class Ui_Cinfo(object):
 		if toggledButton.isChecked() is True and response is not 0:
 				self.returnData(response)
 
+## TO SAVE DATA IN FILE
+	def saveData(self, saveCode):
+		save = saveFile.saveAs()
+		## To save as text file
+		if saveCode is 1:
+			save.saveAsText(self.selectedDict,self.tables.currentText())
+		elif saveCode is 2:
+			save.saveAsCSV(self.selectedDict,self.tables.currentText())	
+		elif saveCode is 3:
+			save.saveAsJson(self.selectedDict,self.tables.currentText())
+
 ## TO CREATE A TABLE
 	def createTable(self,dataList):
 		self.tableWidget.setRowCount(len(dataList)-1)
@@ -335,6 +352,7 @@ class Ui_Cinfo(object):
 
 # CREATE A COMBOBOX FOR GIVEN FUNCTION
 	def createCombo(self, myDict):
+		self.selectedDict = myDict
 		self.tables.clear()
 		self.tables.addItem("Choose the appropriate Information ")
 		self.tables.addItems(myDict.keys())
