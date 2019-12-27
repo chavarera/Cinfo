@@ -348,8 +348,9 @@ class Ui_Cinfo(object):
 					pass
 ## Refresh Function
 	def refresh(self):
-		self.createTable(self.selectedDict[self.tables.currentText()])
-		
+		if self.tables.currentText() != "Home":
+			self.createTable(self.selectedDict[self.tables.currentText()])
+
 # CREATE A COMBOBOX FOR GIVEN FUNCTION
 	def createCombo(self, myDict):
 		self.selectedDict = myDict

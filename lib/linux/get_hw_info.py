@@ -111,6 +111,3 @@ class get_hw_info:
 
 		# RETURNING DATA VARIABLE
 		return self.data
-
-l = get_hw_info()
-print(l.work())
