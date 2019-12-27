@@ -163,6 +163,7 @@ class Ui_Cinfo(object):
 		icon4 = QtGui.QIcon()
 		icon4.addPixmap(QtGui.QPixmap("icons/Refresh.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.actionRefresh.setIcon(icon4)
+		self.actionRefresh.triggered.connect(lambda :self.refresh())
 		font = QtGui.QFont()
 		font.setFamily("Segoe UI")
 		font.setPointSize(12)
@@ -272,10 +273,6 @@ class Ui_Cinfo(object):
 		self.homePage.setChecked(True)
 		self.toggleCheck(self.homePage,0)
 
-## Refresh Function
-	def refresh(self):
-		print("Refreshed")
-
 ## Toggle Check
 	def toggleCheck(self,toggledButton, response):
 		if response is 0 :
@@ -286,32 +283,32 @@ class Ui_Cinfo(object):
 				self.tables.clear()
 				self.tables.addItem("Home")
 				self.textBrowser.setHtml("""<style type="text/css">p, li { white-space: pre-wrap; }</style>
-<center> <img src="./icons/logo.png" align="center"> </center>
-<p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt;"><em><span style="color: rgb(251, 160, 38);">&nbsp;</span></em></span><span style="color: rgb(251, 160, 38);"><em><span style=" font-family:'Cantarell'; font-size:11pt; font-weight:600;">Cinfo &nbsp;( Computer Information )&nbsp;</span></em></span><span style=" font-family:'Cantarell'; font-size:11pt; font-weight:600; vertical-align:sub;"><em><span style="color: rgb(251, 160, 38);">v1.0&nbsp;</span></em></span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Cantarell'; font-size:11pt;">
-  <br>
-</p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt;">Welcome to Cinfo an all in one information board where you gett all information related to your machine.</span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Cantarell'; font-size:11pt;">
-  <br>
-</p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt; font-weight:600;">To get Started&nbsp;</span><span style=" font-family:'Cantarell'; font-size:11pt;">:</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt;">Choose service you want to be informed about, tick on the services and press the 'Let's Go' Button.</span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Cantarell'; font-size:11pt;">
-  <br>
-</p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt; font-weight:600;">Result</span><span style=" font-family:'Cantarell'; font-size:11pt;">&nbsp;:</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt;">Your requested information will be right here in next moment, with title of information you requested.</span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Cantarell'; font-size:11pt;">
-  <br>
-</p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt; font-weight:600;">Support Us !!</span><span style=" font-family:'Cantarell'; font-size:11pt;">&nbsp;:</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt;">To show your support visit </span>
-  <a href="https://Github.com/chavarera/Cinfo" rel="noopener noreferrer" target="_blank"><span style=" font-family:'Cantarell'; font-size:11pt;">G</span><span style=" font-family:'Cantarell'; font-size:11pt;">itHub</span></a>
-  <a href="https://Github.com/chavarera/Cinfo"></a><span style=" font-family:'Cantarell'; font-size:11pt;">&nbsp;page for the software and give us a star</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-  <a href="https://Github.com/chavarera/Cinfo"><span style=" font-family:'Cantarell'; font-size:11pt; text-decoration: underline; color:#0000ff;">https://Github.com/chavarera/Cinfo</span></a>
-</p>""")
+				<center> <img src="./icons/logo.png" align="center"> </center>
+				<p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt;"><em><span style="color: rgb(251, 160, 38);">&nbsp;</span></em></span><span style="color: rgb(251, 160, 38);"><em><span style=" font-family:'Cantarell'; font-size:11pt; font-weight:600;">Cinfo &nbsp;( Computer Information )&nbsp;</span></em></span><span style=" font-family:'Cantarell'; font-size:11pt; font-weight:600; vertical-align:sub;"><em><span style="color: rgb(251, 160, 38);">v1.0&nbsp;</span></em></span></p>
+				<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Cantarell'; font-size:11pt;">
+				  <br>
+				</p>
+				<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt;">Welcome to Cinfo an all in one information board where you gett all information related to your machine.</span></p>
+				<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Cantarell'; font-size:11pt;">
+				  <br>
+				</p>
+				<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt; font-weight:600;">To get Started&nbsp;</span><span style=" font-family:'Cantarell'; font-size:11pt;">:</span></p>
+				<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt;">Choose service you want to be informed about, tick on the services and press the 'Let's Go' Button.</span></p>
+				<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Cantarell'; font-size:11pt;">
+				  <br>
+				</p>
+				<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt; font-weight:600;">Result</span><span style=" font-family:'Cantarell'; font-size:11pt;">&nbsp;:</span></p>
+				<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt;">Your requested information will be right here in next moment, with title of information you requested.</span></p>
+				<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Cantarell'; font-size:11pt;">
+				  <br>
+				</p>
+				<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt; font-weight:600;">Support Us !!</span><span style=" font-family:'Cantarell'; font-size:11pt;">&nbsp;:</span></p>
+				<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Cantarell'; font-size:11pt;">To show your support visit </span>
+				  <a href="https://Github.com/chavarera/Cinfo" rel="noopener noreferrer" target="_blank"><span style=" font-family:'Cantarell'; font-size:11pt;">G</span><span style=" font-family:'Cantarell'; font-size:11pt;">itHub</span></a>
+				  <a href="https://Github.com/chavarera/Cinfo"></a><span style=" font-family:'Cantarell'; font-size:11pt;">&nbsp;page for the software and give us a star</span></p>
+				<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+				  <a href="https://Github.com/chavarera/Cinfo"><span style=" font-family:'Cantarell'; font-size:11pt; text-decoration: underline; color:#0000ff;">https://Github.com/chavarera/Cinfo</span></a>
+				</p>""")
 			else:
 				self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
 				self.tableWidget.setProperty("showDropIndicator", True)
@@ -342,14 +339,17 @@ class Ui_Cinfo(object):
 		self.tableWidget.setRowCount(len(dataList)-1)
 		self.tableWidget.setColumnCount(len(dataList[0]))
 		self.tableWidget.setHorizontalHeaderLabels(dataList[0])
-		dataList.pop(0)
+		dataList = dataList[1:]
 		for row in range(len(dataList)):
 			for column in range(len(dataList[0])):
 				try:
 					self.tableWidget.setItem(row, column, QtWidgets.QTableWidgetItem((dataList[row][column])))
 				except Exception as e:
 					pass
-
+## Refresh Function
+	def refresh(self):
+		self.createTable(self.selectedDict[self.tables.currentText()])
+		
 # CREATE A COMBOBOX FOR GIVEN FUNCTION
 	def createCombo(self, myDict):
 		self.selectedDict = myDict
