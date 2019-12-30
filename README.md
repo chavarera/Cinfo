@@ -55,13 +55,14 @@ pip3 install -r requirements.txt
 **Step 4.** Now run the program by following command in any operating system of your choice :
 ```
 Windows :  python Cinfo.py
-Linux   :  python3 Cinfo.py
+Linux   :  python3 Cinfo.py (Under Maintenance)
 ```
 above scripts Generate System Information.
 
 **Step 5.** Now Run GUI
 ```
-python MainUi.py
+Windows :  python MainUI.py
+Linux   :  python3 linuxUI.py
 ```
 All Installation steps (Tried in Windows)
 
