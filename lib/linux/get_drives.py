@@ -37,7 +37,7 @@ class get_drives:
 		self.temp_drive_list = []																# TO SAVE DRIVE LST TEMPORARILY
 		self.boot_partition = ""																# STRING TO SAVE PARTITION NAME CONTAINING BOOT PARTITION
 		self.drives = []																		# LIST TO STORE ALL THE DRIVE INFO COLLECTED FOR LATER USE
-
+		self.ret_data = {}
 
 	def work(self):
 		'''
@@ -106,5 +106,4 @@ class get_drives:
 					self.temp_drive_list.append(disk)
 			self.data += tabulate(self.temp_drive_list, headers=['Partition Name', 'Total Size','Size Consumed', 'Size Remaining','Size Consumed( in percent )', 'Mounted On'],tablefmt="fancy_grid")
 			self.data += "\n\n\n\n\n"
-
 		return self.data
