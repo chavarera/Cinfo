@@ -55,14 +55,21 @@ pip3 install -r requirements.txt
 **Step 4.** Now run the program by following command in any operating system of your choice :
 ```
 Windows :  python Cinfo.py
-Linux   :  python3 Cinfo.py (Under Maintenance)
+Linux   :  python3 Cinfo.py
 ```
 above scripts Generate System Information.
 
 **Step 5.** Now Run GUI
 ```
-Windows :  python MainUI.py
-Linux   :  python3 linuxUI.py
+Windows : python MainUi.py
+Linux :
+To try it directly run the following command :
+python3 linuxUI.py
+            OR
+To install it into application launcher, run the following commands :
+./install.sh
+
+Now you'll be able to see the application in your application launcher.
 ```
 All Installation steps (Tried in Windows)
 
