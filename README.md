@@ -61,8 +61,15 @@ above scripts Generate System Information.
 
 **Step 5.** Now Run GUI
 ```
-Windows :  python MainUI.py
-Linux   :  python3 linuxUI.py
+Windows : python MainUi.py
+Linux :
+To try it directly run the following command :
+python3 linuxUI.py
+            OR
+To install it into application launcher, run the following commands :
+./install.sh
+
+Now you'll be able to see the application in your application launcher.
 ```
 All Installation steps (Tried in Windows)
 

@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.2
+Type=Application
+Terminal=false
+Exec=sh -c "cd /usr/share/Cinfo;python3 linuxUI.py"
+Name=Cinfo
+Comment=comment here
+Icon=/usr/share/Cinfo/icons/logo.png
