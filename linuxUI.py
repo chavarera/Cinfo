@@ -7,7 +7,6 @@
 # WARNING! All changes made in this file will be lost!
 
 import os
-import pandas as pd
 from PyQt5 import QtCore, QtGui, QtWidgets
 from lib.linux import get_browsers,get_drives,get_hw_info,get_network_info,get_os_info,get_package_list,get_ports,get_startup_list,list_files
 

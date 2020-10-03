@@ -1,6 +1,5 @@
 from lib.windows import SystemInfo,NetworkInfo,SoftwareInfo,StorageInfo
-from lib.windows import HardwareInfo,FileInfo,DeviceInfo,MiscInfo,ServiceInfo
-import os
+from lib.windows import HardwareInfo,DeviceInfo,ServiceInfo
 import json
 import pickle
 

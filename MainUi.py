@@ -8,10 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from lib.windows import SystemInfo,NetworkInfo,SoftwareInfo,StorageInfo
-from lib.windows import HardwareInfo,FileInfo,DeviceInfo,MiscInfo,ServiceInfo
 from lib.windows.common import Utility as utl
-import json
 import os
 import pickle
 

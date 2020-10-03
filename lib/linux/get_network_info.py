@@ -4,7 +4,6 @@
 	Email : 2018PGCACA63@nitjsr.ac.in
 '''
 import os
-from tabulate import tabulate
 
 class get_network_info:
 	'''

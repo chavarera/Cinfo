@@ -3,8 +3,6 @@ from lib.windows.common.CommandHandler import CommandHandler
 from uuid import getnode as get_mac
 from lib.windows.common import Utility as utl
 from lib.windows import SystemInfo 
-#import SystemInfo
-import re
 
 class NetworkInfo:
     '''

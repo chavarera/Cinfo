@@ -4,9 +4,7 @@
 	Email : 2018PGCACA63@nitjsr.ac.in
 '''
 import os
-import filetype
 import json
-from datetime import datetime
 
 class list_files:
 	'''
